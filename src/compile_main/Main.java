@@ -21,6 +21,7 @@ public class Main {
 			parser.programa();
 
 			System.out.println("Compilation Successful");
+			
 		} catch (Exception e) {
 			System.err.println("ERROR" + e.getMessage());
 		}
