@@ -1,0 +1,82 @@
+2021-03-21 01:42:04:430 grammar LogManager.java:25 before: (COMBINED_GRAMMAR miniPascalLang (RULES (RULE programa (BLOCK (ALT 'program' ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) partDecSubRot comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent SC))) (RULE listIdent (BLOCK (ALT ident (BLOCK (ALT V ident))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT 'procedure' ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT 'var'))) listIdent TD ident))) (RULE comandoComposto (BLOCK (ALT 'begin' comando (* (BLOCK (ALT SC comando))) 'end'))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP)))))) (RULE comandoCondicional (BLOCK (ALT 'if' expressao 'then' comando (? (BLOCK (ALT 'else' comando)))))) (RULE comandoRepetitivo (BLOCK (ALT 'while' expressao 'do' comando))) (RULE expressao (BLOCK (ALT expressaoSimples (BLOCK (ALT relacao expressaoSimples))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT '+') (ALT '-'))) termo (* (BLOCK (ALT (BLOCK (ALT '+') (ALT '-') (ALT 'or')) termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (BLOCK (ALT '*') (ALT 'div') (ALT 'and')) fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident (? (BLOCK (ALT expressao)))))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT Letras) (ALT Digitos)))))) (RULE tipo (BLOCK (ALT 'integer') (ALT 'real') (ALT 'boolean') (ALT 'char') (ALT 'string'))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (BLOCK (ALT ' ') (ALT '\n') (ALT '\t') (ALT '\r'))) skip)))))
+2021-03-21 01:42:04:458 grammar LogManager.java:25 after: (COMBINED_GRAMMAR miniPascalLang (RULES (RULE programa (BLOCK (ALT 'program' ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) partDecSubRot comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent SC))) (RULE listIdent (BLOCK (ALT ident (BLOCK (ALT V ident))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT 'procedure' ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT 'var'))) listIdent TD ident))) (RULE comandoComposto (BLOCK (ALT 'begin' comando (* (BLOCK (ALT SC comando))) 'end'))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP)))))) (RULE comandoCondicional (BLOCK (ALT 'if' expressao 'then' comando (? (BLOCK (ALT 'else' comando)))))) (RULE comandoRepetitivo (BLOCK (ALT 'while' expressao 'do' comando))) (RULE expressao (BLOCK (ALT expressaoSimples (BLOCK (ALT relacao expressaoSimples))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT (SET '+' '-')))) termo (* (BLOCK (ALT (SET '+' '-' 'or') termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (SET '*' 'div' 'and') fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident (? (BLOCK (ALT expressao)))))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT (SET Letras Digitos))))))) (RULE tipo (BLOCK (ALT (SET 'integer' 'real' 'boolean' 'char' 'string')))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (SET ' ' '\n' '\t' '\r')) skip)))))
+2021-03-21 01:42:04:485 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR miniPascalLang (RULES (RULE programa (BLOCK (ALT 'program' ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) partDecSubRot comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent SC))) (RULE listIdent (BLOCK (ALT ident (BLOCK (ALT V ident))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT 'procedure' ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT 'var'))) listIdent TD ident))) (RULE comandoComposto (BLOCK (ALT 'begin' comando (* (BLOCK (ALT SC comando))) 'end'))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP)))))) (RULE comandoCondicional (BLOCK (ALT 'if' expressao 'then' comando (? (BLOCK (ALT 'else' comando)))))) (RULE comandoRepetitivo (BLOCK (ALT 'while' expressao 'do' comando))) (RULE expressao (BLOCK (ALT expressaoSimples (BLOCK (ALT relacao expressaoSimples))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT (SET '+' '-')))) termo (* (BLOCK (ALT (SET '+' '-' 'or') termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (SET '*' 'div' 'and') fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident (? (BLOCK (ALT expressao)))))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT (SET Letras Digitos))))))) (RULE tipo (BLOCK (ALT (SET 'integer' 'real' 'boolean' 'char' 'string'))))))
+2021-03-21 01:42:04:485 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR miniPascalLangLexer (RULES (RULE T__0 (BLOCK (ALT 'program'))) (RULE T__1 (BLOCK (ALT 'procedure'))) (RULE T__2 (BLOCK (ALT 'var'))) (RULE T__3 (BLOCK (ALT 'begin'))) (RULE T__4 (BLOCK (ALT 'end'))) (RULE T__5 (BLOCK (ALT 'if'))) (RULE T__6 (BLOCK (ALT 'then'))) (RULE T__7 (BLOCK (ALT 'else'))) (RULE T__8 (BLOCK (ALT 'while'))) (RULE T__9 (BLOCK (ALT 'do'))) (RULE T__10 (BLOCK (ALT '+'))) (RULE T__11 (BLOCK (ALT '-'))) (RULE T__12 (BLOCK (ALT 'or'))) (RULE T__13 (BLOCK (ALT '*'))) (RULE T__14 (BLOCK (ALT 'div'))) (RULE T__15 (BLOCK (ALT 'and'))) (RULE T__16 (BLOCK (ALT 'integer'))) (RULE T__17 (BLOCK (ALT 'real'))) (RULE T__18 (BLOCK (ALT 'boolean'))) (RULE T__19 (BLOCK (ALT 'char'))) (RULE T__20 (BLOCK (ALT 'string'))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (SET ' ' '\n' '\t' '\r')) skip)))))
+2021-03-21 01:42:04:756 semantics LogManager.java:25 tokens={EOF=-1, T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, T__17=18, T__18=19, T__19=20, T__20=21, Operacao=22, Digitos=23, Letras=24, TRUE=25, FALSE=26, SC=27, V=28, OP=29, CP=30, TD=31, TDE=32, NOT=33, WS=34}
+2021-03-21 01:42:04:756 semantics LogManager.java:25 strings={'program'=1, 'procedure'=2, 'var'=3, 'begin'=4, 'end'=5, 'if'=6, 'then'=7, 'else'=8, 'while'=9, 'do'=10, '+'=11, '-'=12, 'or'=13, '*'=14, 'div'=15, 'and'=16, 'integer'=17, 'real'=18, 'boolean'=19, 'char'=20, 'string'=21, 'true'=25, 'false'=26, ';'=27, ','=28, '('=29, ')'=30, ':'=31, ':='=32, 'not'=33}
+2021-03-21 01:42:04:765 LL1 LogManager.java:25 
+DECISION 0 in rule bloco
+2021-03-21 01:42:04:765 LL1 LogManager.java:25 look=[{17..21}, {2, 4}]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 1 in rule partDeclVar
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[27, 27]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 2 in rule partDecSubRot
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[2, 4]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 3 in rule declProced
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[29, 27]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 4 in rule paramFormais
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[27, 30]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 5 in rule secParamFormais
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[3, 24]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 6 in rule comandoComposto
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[27, 5]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 7 in rule comando
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[24, 24, 4, 6, 9]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 8 in rule chamadaProcedimento
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[29, {5, 8, 27}]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 9 in rule comandoCondicional
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 look=[8, {5, 8, 27}]
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:766 LL1 LogManager.java:25 
+DECISION 10 in rule expressaoSimples
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 look=[{11..12}, {23..24, 29, 33}]
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 
+DECISION 11 in rule expressaoSimples
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 look=[{11..13}, {5, 7..8, 10..16, 22, 27..28, 30, 32}]
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 
+DECISION 12 in rule termo
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 look=[{14..16}, {5, 7..8, 10..16, 22, 27..28, 30, 32}]
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 
+DECISION 13 in rule fator
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 look=[24, 23, 29, 33]
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:767 LL1 LogManager.java:25 
+DECISION 14 in rule variavel
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 look=[{11..12, 23..24, 29, 33}, {5, 7..8, 10..16, 22, 27..28, 30, 32}]
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 
+DECISION 15 in rule variavel
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 look=[24, 24]
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 LL(1)? false
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 
+DECISION 16 in rule listExpressoes
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 look=[28, 30]
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 
+DECISION 17 in rule numero
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 look=[23, {5, 7..8, 10..16, 22, 27..28, 30, 32}]
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 LL(1)? true
+2021-03-21 01:42:04:768 LL1 LogManager.java:25 
+DECISION 18 in rule ident
+2021-03-21 01:42:04:769 LL1 LogManager.java:25 look=[{23..24}, {5, 7..8, 10..16, 22..24, 27..33}]
+2021-03-21 01:42:04:769 LL1 LogManager.java:25 LL(1)? false
