@@ -3,11 +3,12 @@ grammar miniPascalLang;
 
 
 @header{
-	import PascalSymbol;
-	import PascalVariable;
-	import PascalSymbolTable;
-	import PascalSemanticException;
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
+
 }
 
 @members{
@@ -16,13 +17,19 @@ grammar miniPascalLang;
 	private String _varValue;
 	private PascalSymbolTable symbolTable = new PascalSymbolTable();
 	private PascalSymbol symbol;
+	
+	public void verifiqueID(String id){
+		if(!symbolTable.exists(id)){
+			throw new PascalSemanticException("Symbol " +_varName+"  already declared");
+		}
+	}
 }
 
 
 //PROGRAMA E BLOCO
 
 
-programa	: PROGRAM ident SC bloco;
+programa	: PROGRAM ident {verifiqueID(_input.LT(-1).getText()); } SC bloco;
 
 bloco 		: partDeclVar? partDecSubRot? comandoComposto;
 
@@ -39,7 +46,7 @@ listIdent			: ident {
 										if(!symbolTable.exists(_varName)){
 											symbolTable.add(symbol);
 										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+"already declared");
+											throw new PascalSemanticException("Symbol"+ _varName+"2 already declared");
 										}
 										} 
 									(V ident { 
@@ -49,32 +56,36 @@ listIdent			: ident {
 										if(!symbolTable.exists(_varName)){
 											symbolTable.add(symbol);
 										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+"already declared");
+											throw new PascalSemanticException("Symbol"+ _varName+" 3 already declared");
 										}
 								})*;
 
 partDecSubRot		: (declProced SC)*;
 
-declProced			: 'procedure' ident paramFormais? SC bloco;
+declProced			: 'procedure' ident {verifiqueID(_input.LT(-1).getText()); } 
+									paramFormais? SC bloco;
+									
 
 paramFormais		: OP secParamFormais (SC secParamFormais)* CP;
 
-secParamFormais		: VAR ? listIdent TD ident;
+secParamFormais		: VAR ? listIdent TD ident { verifiqueID(_input.LT(-1).getText()); };
 
 
 
 //COMANDOS
 comando				: atribuicao | chamadaProcedimento | comandoComposto | comandoCondicional | comandoRepetitivo;
 
-comandoComposto		: BEGIN comando (SC comando)* END ;
+comandoComposto		: BEGIN comando (SC comando)* END {System.out.println("Comando composto reconhecido!");} ;
 
-atribuicao			: variavel TDE expressao;
+atribuicao			: variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");};
 
-chamadaProcedimento	: ident (OP listExpressoes CP)?;
+chamadaProcedimento	: ident {verifiqueID(_input.LT(-1).getText());}
+									(OP listExpressoes CP)? {System.out.println("Comando chamada de procedimento reconhecido!");}			
+									;
 
-comandoCondicional  : IF expressao THEN comando (ELSE comando)?;
+comandoCondicional  : IF expressao THEN comando (ELSE comando)? {System.out.println("Comando condicional reconhecido!");};
 
-comandoRepetitivo 	: WHILE expressao DO comando;
+comandoRepetitivo 	: WHILE expressao DO comando {System.out.println("Comando repetitivo reconhecido!");};
 
 
 //EXPRESSOES
@@ -89,7 +100,8 @@ termo 				: fator((VEZES | DIV | AND )fator)*;
 
 fator				: variavel | numero | OP expressao CP | NOT fator ;
 
-variavel			: ident | ident (expressao)?;
+variavel			: ident {verifiqueID(_input.LT(-1).getText());}
+						| ident {verifiqueID(_input.LT(-1).getText()); } (expressao)?;
 
 listExpressoes		: expressao (V expressao)*;
 

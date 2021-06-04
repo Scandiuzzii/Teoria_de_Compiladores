@@ -1,10 +1,11 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
 
-	import PascalSymbol;
-	import PascalVariable;
-	import PascalSymbolTable;
-	import PascalSemanticException;
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
+
 
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -52,6 +53,12 @@ public class miniPascalLangLexer extends Lexer {
 		private String _varValue;
 		private PascalSymbolTable symbolTable = new PascalSymbolTable();
 		private PascalSymbol symbol;
+		
+		public void verifiqueID(String id){
+			if(!symbolTable.exists(id)){
+				throw new PascalSemanticException("Symbol " +_varName+"  already declared");
+			}
+		}
 
 
 	public miniPascalLangLexer(CharStream input) {

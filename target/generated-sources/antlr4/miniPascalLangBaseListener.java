@@ -1,10 +1,11 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
 
-	import PascalSymbol;
-	import PascalVariable;
-	import PascalSymbolTable;
-	import PascalSemanticException;
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
+
 
 
 import org.antlr.v4.runtime.ParserRuleContext;

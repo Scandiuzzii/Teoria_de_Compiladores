@@ -1,14 +1,10 @@
 program Teste1;
 
 integer x;
-integer y;
-integer a; 
-string a;
+ 
 
 
 begin 
   x := 10
-  y :=1
-  a :=3+2
   
 end

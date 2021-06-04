@@ -7,6 +7,7 @@ package compile_parser;
 	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
 
+
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -104,6 +105,12 @@ public class miniPascalLangLexer extends Lexer {
 		private String _varValue;
 		private PascalSymbolTable symbolTable = new PascalSymbolTable();
 		private PascalSymbol symbol;
+		
+		public void verifiqueID(String id){
+			if(!symbolTable.exists(id)){
+				throw new PascalSemanticException("Symbol " +_varName+"  already declared");
+			}
+		}
 
 
 	public miniPascalLangLexer(CharStream input) {
