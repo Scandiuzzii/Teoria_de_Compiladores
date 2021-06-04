@@ -1,5 +1,12 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
 
+	import PascalSymbol;
+	import PascalVariable;
+	import PascalSymbolTable;
+	import PascalSemanticException;
+	import java.util.ArrayList;
+
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;

@@ -1,5 +1,12 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.7.2
 package compile_parser;
+
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -98,16 +105,6 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitSecParamFormais(miniPascalLangParser.SecParamFormaisContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
-	 * @param ctx the parse tree
-	 */
-	void enterComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
-	 * @param ctx the parse tree
-	 */
-	void exitComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#comando}.
 	 * @param ctx the parse tree
 	 */
@@ -117,6 +114,16 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComando(miniPascalLangParser.ComandoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
+	 * @param ctx the parse tree
+	 */
+	void enterComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
+	 * @param ctx the parse tree
+	 */
+	void exitComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#atribuicao}.
 	 * @param ctx the parse tree
