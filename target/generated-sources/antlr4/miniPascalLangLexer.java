@@ -54,9 +54,9 @@ public class miniPascalLangLexer extends Lexer {
 		private PascalSymbolTable symbolTable = new PascalSymbolTable();
 		private PascalSymbol symbol;
 		
-		public void verifiqueID(String id){
+		public void verificaID(String id){
 			if(!symbolTable.exists(id)){
-				throw new PascalSemanticException("Symbol " +_varName+"  already declared");
+				throw new PascalSemanticException("Symbol "+_varName+" already declared");
 			}
 		}
 

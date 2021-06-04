@@ -14,6 +14,11 @@ public abstract class PascalSymbol {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		return "PascalSymbol [name=" + name + "]";
+	}
 	
 
 }

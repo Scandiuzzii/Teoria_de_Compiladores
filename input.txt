@@ -1,10 +1,10 @@
 program Teste1;
 
-integer x;
+String x;
  
 
 
 begin 
-  x := 10
+  x := a
   
 end

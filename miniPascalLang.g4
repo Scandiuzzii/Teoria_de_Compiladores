@@ -18,9 +18,9 @@ grammar miniPascalLang;
 	private PascalSymbolTable symbolTable = new PascalSymbolTable();
 	private PascalSymbol symbol;
 	
-	public void verifiqueID(String id){
+	public void verificaID(String id){
 		if(!symbolTable.exists(id)){
-			throw new PascalSemanticException("Symbol " +_varName+"  already declared");
+			throw new PascalSemanticException("Symbol "+_varName+" already declared");
 		}
 	}
 }
@@ -29,13 +29,13 @@ grammar miniPascalLang;
 //PROGRAMA E BLOCO
 
 
-programa	: PROGRAM ident {verifiqueID(_input.LT(-1).getText()); } SC bloco;
+programa	: PROGRAM ident  { verificaID(_input.LT(-1).getText()); }SC bloco;
 
 bloco 		: partDeclVar? partDecSubRot? comandoComposto;
 
 //DECLARAÇÕES 
 
-partDeclVar			: declVar (SC declVar)*SC;
+partDeclVar			: declVar (SC declVar)* SC;
 
 declVar 			: tipo listIdent;
 
@@ -62,13 +62,13 @@ listIdent			: ident {
 
 partDecSubRot		: (declProced SC)*;
 
-declProced			: 'procedure' ident {verifiqueID(_input.LT(-1).getText()); } 
+declProced			: 'procedure' ident { verificaID(_input.LT(-1).getText()); }
 									paramFormais? SC bloco;
 									
 
 paramFormais		: OP secParamFormais (SC secParamFormais)* CP;
 
-secParamFormais		: VAR ? listIdent TD ident { verifiqueID(_input.LT(-1).getText()); };
+secParamFormais		: VAR ? listIdent TD ident { verificaID(_input.LT(-1).getText()); };
 
 
 
@@ -79,7 +79,7 @@ comandoComposto		: BEGIN comando (SC comando)* END {System.out.println("Comando 
 
 atribuicao			: variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");};
 
-chamadaProcedimento	: ident {verifiqueID(_input.LT(-1).getText());}
+chamadaProcedimento	: ident  { verificaID(_input.LT(-1).getText()); }
 									(OP listExpressoes CP)? {System.out.println("Comando chamada de procedimento reconhecido!");}			
 									;
 
@@ -100,8 +100,8 @@ termo 				: fator((VEZES | DIV | AND )fator)*;
 
 fator				: variavel | numero | OP expressao CP | NOT fator ;
 
-variavel			: ident {verifiqueID(_input.LT(-1).getText());}
-						| ident {verifiqueID(_input.LT(-1).getText()); } (expressao)?;
+variavel			: ident { verificaID(_input.LT(-1).getText()); } 
+						| ident  { verificaID(_input.LT(-1).getText()); };
 
 listExpressoes		: expressao (V expressao)*;
 
