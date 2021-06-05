@@ -30,21 +30,17 @@ grammar miniPascalLang;
 //PROGRAMA E BLOCO
 
 
-programa	: PROGRAM identificador PV bloco
-			;
+programa				: 'program' ident SC bloco;
 			
-bloco		: part_decl_var? part_decl_sub_rotinas? comando_composto
-			;
+bloco 					: partDeclVar? partDecSubRot? comandoComposto;
 
-//Declarações
+//DeclaraÃ§Ãµes
 
-part_decl_var : decl_vars (PV decl_vars)* PV
-			  ;
+partDeclVar 				: declVar (SC declVar)*SC;
 
-decl_vars 	: tipo lista_identificadores
-			;
+declVar 				: tipo listIdent;
 			
-lista_identificadores	: identificador{
+listIdent				: ident{
 								_varName = _input.LT(-1).getText();
 								_varValue = null;
 								symbol = new PascalVariable( _varName, _tipo, _varValue);
@@ -56,7 +52,7 @@ lista_identificadores	: identificador{
 									throw new PascalSemanticException("Symbol "+_varName+" already declared");
 								}		
 						} 
-						(VG identificador{
+						(V ident{
 								_varName = _input.LT(-1).getText();
 								_varValue = null;
 								symbol = new PascalVariable( _varName, _tipo, _varValue);
@@ -68,189 +64,95 @@ lista_identificadores	: identificador{
 									throw new PascalSemanticException("Symbol "+_varName+" already declared");
 								}	
 						}	
-						)*
-						;
+						)*;
 
-part_decl_sub_rotinas	: ( decl_procedimento PV)*
-						;
+partDecSubRot				: (declProced SC)*;
 						
-decl_procedimento	: PROCEDURE identificador{ verificaID(_input.LT(-1).getText()); } 
-					parametr_formais? PV bloco
-					;
+declProced				: 'procedure' ident { verificaID(_input.LT(-1).getText()); } 
+						paramFormais? SC bloco;
 					
-parametr_formais	: AP selec_parametr_formais (PV selec_parametr_formais)* FP
-					;
+paramFormais				: OP secParamFormais (SC secParamFormais)* CP;
 			
-selec_parametr_formais	: VAR? lista_identificadores DP identificador { verificaID(_input.LT(-1).getText()); }
-						;
+secParamFormais				: 'var'? listIdent TD ident { verificaID(_input.LT(-1).getText()); };
 						
 //Comandos
 
-comando_composto	: BEGIN comando (comando)* END {System.out.println("Reconheci um comando composto");}
-					;
+comandoComposto				: 'begin' comando (SC comando)* 'end' {System.out.println("Reconheci um comando composto");};
 					
-comando	: atribuicao | chamada_procedimento | comando_composto | comando_condicional | comando_repetitivo
-		;
+comando					: atribuicao | chamadaProcedimento | comandoComposto | comandoCondicional | comandoRepetitivo;
+
 		
-atribuicao	: variavel ATB expressao {System.out.println("Reconheci um comando de atribuicao");}
-			;
+atribuicao				: variavel TDE expressao {System.out.println("Reconheci um comando de atribuicao");};
 			
-chamada_procedimento	: identificador { verificaID(_input.LT(-1).getText()); } 
-						(AP list_expressoes FP)? {System.out.println("Reconheci um comando de chamada de procedimento");}
-						;
+chamadaProcedimento			: ident { verificaID(_input.LT(-1).getText()); } 
+						(OP listExpressoes CP)? {System.out.println("Reconheci um comando de chamada de procedimento");};
 						
-comando_condicional	: IF expressao THEN comando (ELSE comando)? {System.out.println("Reconheci um comando condicional");}
-					;
+comandoCondicional			: 'IF' expressao 'then' comando ('else' comando)? {System.out.println("Reconheci um comando condicional");};
 
-comando_repetitivo	: WHILE expressao DO comando {System.out.println("Reconheci um comando repetitivo");}
-					;
+comandoRepetitivo			: 'while' expressao 'do' comando {System.out.println("Reconheci um comando repetitivo");};
 
-//Expressões
-expressao	: expressao_simples (Relacao expressao_simples)?
-			;
+//ExpressÃµes
+expressao				: expressaoSimples (relacao expressaoSimples)?;
+
+relacao 				: Operacao;	
 					
-expressao_simples	: (PLUS | MINUS)? termo ((PLUS | MINUS | OR) termo)*
-					;
+expressaoSimples			: ('+' | '-')? termo (('+' | '-' | 'or') termo)*;
 					
-termo	: fator ((TIMES | DIV | AND) fator)*
-		;
+termo					: fator (('*' | 'div' | 'and') fator)*;
 		
-fator	: variavel | numero | AP expressao FP | NOT fator
-		;
+fator					: variavel | numero | OP expressao CP | NOT fator;
 
-variavel	: identificador { verificaID(_input.LT(-1).getText()); } 
-			| identificador { verificaID(_input.LT(-1).getText()); }
-			(expressao)?
-			;
+variavel				: ident { verificaID(_input.LT(-1).getText()); } 
+						| ident { verificaID(_input.LT(-1).getText()); }
+						(expressao)? ;
 			
-list_expressoes	: expressao (VG expressao)*
-				;		
+listExpressoes				: expressao (V expressao)*;		
 		
-//Números e idetificadores
-numero	:Digito (Digito)*
-		;	
+//NÃºmeros e idetificadores
+
+numero					: Digito (Digito)*;	
 		
-identificador	: Letra (Letra | Digito)*
-				;
+identificador				: Letra (Letra | Digito)*;
 				
-//TIPOS		
-tipo	: Integer { _tipo = PascalVariable.INTEGER; } 
-		| Real    { _tipo = PascalVariable.REAL; }
-		| Boolean { _tipo = PascalVariable.BOOLEAN; }
-		| String  { _tipo = PascalVariable.STRING; }
-		;
+//TIPOS
+
+tipo					: Integer { _tipo = PascalVariable.INTEGER; } 
+						| Real    { _tipo = PascalVariable.REAL; }
+						| Boolean { _tipo = PascalVariable.BOOLEAN; }
+						| String  { _tipo = PascalVariable.STRING; }
+						;
 				
 //TOKENS				
 				
-Digito	: [0-9]
-		;	
+Digito					: [0-9];	
 				
-Letra	:	'_' | [a-z] | [A-Z] 			
-		;
+Letra					: '_' | [a-z] | [A-Z] ;
 
-Relacao	: '=' | '<>' | '<' | '<=' | '>=' | '>'
-		;
-	
-PROGRAM : 'program'
-		;
-	
-PROCEDURE	: 'procedure'
-			;
-			
-VAR	:	'var'
-	;
-	
-BEGIN	:	'begin'
-		;
-		
-END	:	'end'
-	;
+ident 					: Letras (Letras | Digitos)*;
 
-THEN:	'then'
-	;
-	
-ELSE:	'else'
-	;
-	
-WHILE	:	'while'
-		;
+Operacao				: '=' | '<>' | '<' | '<=' | '>=' | '>';
 
-DO	:	'do'
-	;
-	
-OR	:	'or'
-	;
-	
-DIV	:	'div'
-	;
-	
-AND	:	'and'
-	;
-	
-NOT	:	'not'
-	;
-	
-Integer	: 	'integer'
-		;
-		
-Real	:	'real'
-		;
-		
-Boolean	:	'boolean'
-		;
-		
-Char	:	'char'
-		;
-		
-String	:	'String'
-		;
-		
-TRUE	: 	'TRUE'
-		;
-		
-FALSE	:	'FALSE'
-		;
-	
-PLUS	:	'+'
-		;
-		
-MINUS	:	'-'
-		;
-		
-TIMES	:	'*'
-		;		
+Digitos					: [0-9] + ('.' [0-9]+)?;
 
-AP	:	'('
-	;
-	
-FP	:	')'
-	;
-			
-PV	:	';'
-	;
-	
-VG	: 	','
-	;
-	
-DP	:	':'
-	;		
+Letras					: [a-z] | [A-Z] ([a-z] | [A-Z] | [0-9] )*;
 
-ATB	:	':='
-	;
-	
-IF	: 	'if'
-	;
-	
-WS	:	(' ' | '\n' | '\t' | '\r') -> skip;
+TRUE					: 'true';
 
+FALSE					: 'false';
 
+SC					: ';';
 
+V					: ',';
 
+OP					: '(';
 
+CP					: ')';
 
+TD					: ':';
 
+TDE					: ':=';
 
+NOT					: 'not';
 
-
-		
+WS					: (' ' | '\n' | '\t' | '\r') -> skip;
 					
