@@ -1,6 +1,7 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.7.2
 package compile_parser;
 
+<<<<<<< HEAD
 	import data_structure.PascalSymbol;
 	import data_structure.PascalVariable;
 	import data_structure.PascalSymbolTable;
@@ -9,6 +10,8 @@ package compile_parser;
 
 
 
+=======
+>>>>>>> parent of 08655c7... Em andamento
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -132,18 +135,6 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComando(miniPascalLangParser.ComandoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitComando(miniPascalLangParser.ComandoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -151,6 +142,18 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComando(miniPascalLangParser.ComandoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComando(miniPascalLangParser.ComandoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

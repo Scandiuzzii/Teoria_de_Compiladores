@@ -1,4 +1,5 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
+<<<<<<< HEAD
 
 	import data_structure.PascalSymbol;
 	import data_structure.PascalVariable;
@@ -7,6 +8,8 @@
 	import java.util.ArrayList;
 
 
+=======
+>>>>>>> parent of 08655c7... Em andamento
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
