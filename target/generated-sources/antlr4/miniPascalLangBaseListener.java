@@ -24,25 +24,25 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParamFormais(@NotNull miniPascalLangParser.ParamFormaisContext ctx) { }
+	@Override public void enterDecl_procedimento(@NotNull miniPascalLangParser.Decl_procedimentoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParamFormais(@NotNull miniPascalLangParser.ParamFormaisContext ctx) { }
+	@Override public void exitDecl_procedimento(@NotNull miniPascalLangParser.Decl_procedimentoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComandoCondicional(@NotNull miniPascalLangParser.ComandoCondicionalContext ctx) { }
+	@Override public void enterAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComandoCondicional(@NotNull miniPascalLangParser.ComandoCondicionalContext ctx) { }
+	@Override public void exitAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -55,6 +55,18 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTipo(@NotNull miniPascalLangParser.TipoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterChamada_procedimento(@NotNull miniPascalLangParser.Chamada_procedimentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitChamada_procedimento(@NotNull miniPascalLangParser.Chamada_procedimentoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -84,13 +96,13 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIdent(@NotNull miniPascalLangParser.IdentContext ctx) { }
+	@Override public void enterLista_identificadores(@NotNull miniPascalLangParser.Lista_identificadoresContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIdent(@NotNull miniPascalLangParser.IdentContext ctx) { }
+	@Override public void exitLista_identificadores(@NotNull miniPascalLangParser.Lista_identificadoresContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -120,6 +132,18 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterSelec_parametr_formais(@NotNull miniPascalLangParser.Selec_parametr_formaisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitSelec_parametr_formais(@NotNull miniPascalLangParser.Selec_parametr_formaisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTermo(@NotNull miniPascalLangParser.TermoContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -132,157 +156,37 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterChamadaProcedimento(@NotNull miniPascalLangParser.ChamadaProcedimentoContext ctx) { }
+	@Override public void enterList_expressoes(@NotNull miniPascalLangParser.List_expressoesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitChamadaProcedimento(@NotNull miniPascalLangParser.ChamadaProcedimentoContext ctx) { }
+	@Override public void exitList_expressoes(@NotNull miniPascalLangParser.List_expressoesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRelacao(@NotNull miniPascalLangParser.RelacaoContext ctx) { }
+	@Override public void enterParametr_formais(@NotNull miniPascalLangParser.Parametr_formaisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRelacao(@NotNull miniPascalLangParser.RelacaoContext ctx) { }
+	@Override public void exitParametr_formais(@NotNull miniPascalLangParser.Parametr_formaisContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterComando(@NotNull miniPascalLangParser.ComandoContext ctx) { }
+	@Override public void enterComando_condicional(@NotNull miniPascalLangParser.Comando_condicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitComando(@NotNull miniPascalLangParser.ComandoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclProced(@NotNull miniPascalLangParser.DeclProcedContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclProced(@NotNull miniPascalLangParser.DeclProcedContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPartDeclVar(@NotNull miniPascalLangParser.PartDeclVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPartDeclVar(@NotNull miniPascalLangParser.PartDeclVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterListExpressoes(@NotNull miniPascalLangParser.ListExpressoesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitListExpressoes(@NotNull miniPascalLangParser.ListExpressoesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterComandoComposto(@NotNull miniPascalLangParser.ComandoCompostoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitComandoComposto(@NotNull miniPascalLangParser.ComandoCompostoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterPartDecSubRot(@NotNull miniPascalLangParser.PartDecSubRotContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitPartDecSubRot(@NotNull miniPascalLangParser.PartDecSubRotContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSecParamFormais(@NotNull miniPascalLangParser.SecParamFormaisContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSecParamFormais(@NotNull miniPascalLangParser.SecParamFormaisContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterComandoRepetitivo(@NotNull miniPascalLangParser.ComandoRepetitivoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitComandoRepetitivo(@NotNull miniPascalLangParser.ComandoRepetitivoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExpressaoSimples(@NotNull miniPascalLangParser.ExpressaoSimplesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpressaoSimples(@NotNull miniPascalLangParser.ExpressaoSimplesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclVar(@NotNull miniPascalLangParser.DeclVarContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclVar(@NotNull miniPascalLangParser.DeclVarContext ctx) { }
+	@Override public void exitComando_condicional(@NotNull miniPascalLangParser.Comando_condicionalContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -300,6 +204,42 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDecl_vars(@NotNull miniPascalLangParser.Decl_varsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecl_vars(@NotNull miniPascalLangParser.Decl_varsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComando(@NotNull miniPascalLangParser.ComandoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComando(@NotNull miniPascalLangParser.ComandoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterComando_composto(@NotNull miniPascalLangParser.Comando_compostoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitComando_composto(@NotNull miniPascalLangParser.Comando_compostoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterVariavel(@NotNull miniPascalLangParser.VariavelContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -312,13 +252,61 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterListIdent(@NotNull miniPascalLangParser.ListIdentContext ctx) { }
+	@Override public void enterComando_repetitivo(@NotNull miniPascalLangParser.Comando_repetitivoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitListIdent(@NotNull miniPascalLangParser.ListIdentContext ctx) { }
+	@Override public void exitComando_repetitivo(@NotNull miniPascalLangParser.Comando_repetitivoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPart_decl_var(@NotNull miniPascalLangParser.Part_decl_varContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPart_decl_var(@NotNull miniPascalLangParser.Part_decl_varContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterPart_decl_sub_rotinas(@NotNull miniPascalLangParser.Part_decl_sub_rotinasContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitPart_decl_sub_rotinas(@NotNull miniPascalLangParser.Part_decl_sub_rotinasContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpressao_simples(@NotNull miniPascalLangParser.Expressao_simplesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpressao_simples(@NotNull miniPascalLangParser.Expressao_simplesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterIdentificador(@NotNull miniPascalLangParser.IdentificadorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdentificador(@NotNull miniPascalLangParser.IdentificadorContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

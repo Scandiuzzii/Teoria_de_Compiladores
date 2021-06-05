@@ -23,168 +23,225 @@ grammar miniPascalLang;
 			throw new PascalSemanticException("Symbol "+_varName+" already declared");
 		}
 	}
+	
 }
 
 
 //PROGRAMA E BLOCO
 
 
-programa	: PROGRAM ident  { verificaID(_input.LT(-1).getText()); }SC bloco;
+programa	: PROGRAM identificador PV bloco
+			;
+			
+bloco		: part_decl_var? part_decl_sub_rotinas? comando_composto
+			;
 
-bloco 		: partDeclVar? partDecSubRot? comandoComposto;
+//Declarações
 
-//DECLARAÇÕES 
+part_decl_var : decl_vars (PV decl_vars)* PV
+			  ;
 
-partDeclVar			: declVar (SC declVar)* SC;
+decl_vars 	: tipo lista_identificadores
+			;
+			
+lista_identificadores	: identificador{
+								_varName = _input.LT(-1).getText();
+								_varValue = null;
+								symbol = new PascalVariable( _varName, _tipo, _varValue);
+								System.out.println("Simbolo adicionado" + symbol);
+								if (!symbolTable.exists(_varName)){
+									symbolTable.add(symbol);
+								}
+								else{
+									throw new PascalSemanticException("Symbol "+_varName+" already declared");
+								}		
+						} 
+						(VG identificador{
+								_varName = _input.LT(-1).getText();
+								_varValue = null;
+								symbol = new PascalVariable( _varName, _tipo, _varValue);
+								System.out.println("Simbolo adicionado" + symbol);
+								if (!symbolTable.exists(_varName)){
+									symbolTable.add(symbol);
+								}
+								else{
+									throw new PascalSemanticException("Symbol "+_varName+" already declared");
+								}	
+						}	
+						)*
+						;
 
-declVar 			: tipo listIdent;
+part_decl_sub_rotinas	: ( decl_procedimento PV)*
+						;
+						
+decl_procedimento	: PROCEDURE identificador{ verificaID(_input.LT(-1).getText()); } 
+					parametr_formais? PV bloco
+					;
+					
+parametr_formais	: AP selec_parametr_formais (PV selec_parametr_formais)* FP
+					;
+			
+selec_parametr_formais	: VAR? lista_identificadores DP identificador { verificaID(_input.LT(-1).getText()); }
+						;
+						
+//Comandos
 
-listIdent			: ident {
-										_varName = _input.LT(-1).getText();
-										_varValue = null;
-										symbol = new PascalVariable(_varName,_tipo, _varValue);
-										if(!symbolTable.exists(_varName)){
-											symbolTable.add(symbol);
-										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+"2 already declared");
-										}
-										} 
-									(V ident { 
-										_varName = _input.LT(-1).getText();
-										_varValue = null;
-										symbol = new PascalVariable(_varName,_tipo, _varValue);
-										if(!symbolTable.exists(_varName)){
-											symbolTable.add(symbol);
-										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+" 3 already declared");
-										}
-								})*;
-
-partDecSubRot		: (declProced SC)*;
-
-declProced			: 'procedure' ident { verificaID(_input.LT(-1).getText()); }
-									paramFormais? SC bloco;
-									
-
-paramFormais		: OP secParamFormais (SC secParamFormais)* CP;
-
-secParamFormais		: VAR ? listIdent TD ident { verificaID(_input.LT(-1).getText()); };
-
-
-
-//COMANDOS
-comando				: atribuicao | chamadaProcedimento | comandoComposto | comandoCondicional | comandoRepetitivo;
-
-comandoComposto		: BEGIN comando (SC comando)* END {System.out.println("Comando composto reconhecido!");} ;
-
-atribuicao			: variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");};
-
-chamadaProcedimento	: ident  { verificaID(_input.LT(-1).getText()); }
-									(OP listExpressoes CP)? {System.out.println("Comando chamada de procedimento reconhecido!");}			
-									;
-
-comandoCondicional  : IF expressao THEN comando (ELSE comando)? {System.out.println("Comando condicional reconhecido!");};
-
-comandoRepetitivo 	: WHILE expressao DO comando {System.out.println("Comando repetitivo reconhecido!");};
-
-
-//EXPRESSOES
-
-expressao			: expressaoSimples (relacao expressaoSimples)?;
-
-relacao				: Operacao; 
-
-expressaoSimples	: (MAIS | MENOS)? termo ((MAIS | MENOS | OR) termo)*;
-
-termo 				: fator((VEZES | DIV | AND )fator)*;
-
-fator				: variavel | numero | OP expressao CP | NOT fator ;
-
-variavel			: ident { verificaID(_input.LT(-1).getText()); } 
-						| ident  { verificaID(_input.LT(-1).getText()); };
-
-listExpressoes		: expressao (V expressao)*;
-
-
-//NÚMEROS E IDENTIFICADORES
-
-numero 				: Digitos (Digitos)*; 
-
-ident 				: Letras (Letras | Digitos)*;
-
-tipo				:  INTEGER {_tipo = PascalVariable.INTEGER;} 
-					| REAL {_tipo = PascalVariable.REAL;} 
-					| BOOLEAN {_tipo = PascalVariable.BOOLEAN;} 
-					| STRING {_tipo = PascalVariable.STRING;}
+comando_composto	: BEGIN comando (comando)* END {System.out.println("Reconheci um comando composto");}
+					;
+					
+comando	: atribuicao | chamada_procedimento | comando_composto | comando_condicional | comando_repetitivo
+		;
+		
+atribuicao	: variavel ATB expressao {System.out.println("Reconheci um comando de atribuicao");}
+			;
+			
+chamada_procedimento	: identificador { verificaID(_input.LT(-1).getText()); } 
+						(AP list_expressoes FP)? {System.out.println("Reconheci um comando de chamada de procedimento");}
+						;
+						
+comando_condicional	: IF expressao THEN comando (ELSE comando)? {System.out.println("Reconheci um comando condicional");}
 					;
 
-//TOKENS
+comando_repetitivo	: WHILE expressao DO comando {System.out.println("Reconheci um comando repetitivo");}
+					;
 
-PROGRAM				: 'program';
+//Expressões
+expressao	: expressao_simples (Relacao expressao_simples)?
+			;
+					
+expressao_simples	: (PLUS | MINUS)? termo ((PLUS | MINUS | OR) termo)*
+					;
+					
+termo	: fator ((TIMES | DIV | AND) fator)*
+		;
+		
+fator	: variavel | numero | AP expressao FP | NOT fator
+		;
 
-INTEGER				: 'integer';
+variavel	: identificador { verificaID(_input.LT(-1).getText()); } 
+			| identificador { verificaID(_input.LT(-1).getText()); }
+			(expressao)?
+			;
+			
+list_expressoes	: expressao (VG expressao)*
+				;		
+		
+//Números e idetificadores
+numero	:Digito (Digito)*
+		;	
+		
+identificador	: Letra (Letra | Digito)*
+				;
+				
+//TIPOS		
+tipo	: Integer { _tipo = PascalVariable.INTEGER; } 
+		| Real    { _tipo = PascalVariable.REAL; }
+		| Boolean { _tipo = PascalVariable.BOOLEAN; }
+		| String  { _tipo = PascalVariable.STRING; }
+		;
+				
+//TOKENS				
+				
+Digito	: [0-9]
+		;	
+				
+Letra	:	'_' | [a-z] | [A-Z] 			
+		;
 
-REAL				: 'real';
+Relacao	: '=' | '<>' | '<' | '<=' | '>=' | '>'
+		;
+	
+PROGRAM : 'program'
+		;
+	
+PROCEDURE	: 'procedure'
+			;
+			
+VAR	:	'var'
+	;
+	
+BEGIN	:	'begin'
+		;
+		
+END	:	'end'
+	;
 
-BOOLEAN				: 'boolean';
+THEN:	'then'
+	;
+	
+ELSE:	'else'
+	;
+	
+WHILE	:	'while'
+		;
 
-CHAR				: 'char';
+DO	:	'do'
+	;
+	
+OR	:	'or'
+	;
+	
+DIV	:	'div'
+	;
+	
+AND	:	'and'
+	;
+	
+NOT	:	'not'
+	;
+	
+Integer	: 	'integer'
+		;
+		
+Real	:	'real'
+		;
+		
+Boolean	:	'boolean'
+		;
+		
+Char	:	'char'
+		;
+		
+String	:	'String'
+		;
+		
+TRUE	: 	'TRUE'
+		;
+		
+FALSE	:	'FALSE'
+		;
+	
+PLUS	:	'+'
+		;
+		
+MINUS	:	'-'
+		;
+		
+TIMES	:	'*'
+		;		
 
-STRING				: 'string';
+AP	:	'('
+	;
+	
+FP	:	')'
+	;
+			
+PV	:	';'
+	;
+	
+VG	: 	','
+	;
+	
+DP	:	':'
+	;		
 
-Operacao			: '=' | '<>' | '<' | '<=' | '>=' | '>';
-
-MAIS				: '+';
-
-MENOS				: '-';
-
-OR					: 'or';
-
-VEZES				: '*';
-
-DIV					: 'div';
-
-AND					: 'and';
-
-Digitos				: [0-9] + ('.' [0-9]+)?;
-
-Letras				: [a-z] | [A-Z] ([a-z] | [A-Z] | [0-9] )*;
-
-TRUE				: 'true';
-
-FALSE				: 'false';
-
-SC					: ';';
-
-V					: ',';
-
-VAR					: 'var';
-
-OP					: '(';
-
-CP					: ')';	
-
-TD					: ':';
-
-TDE					: ':=';
-
-NOT					: 'not';
-
-WS					: (' ' | '\n' | '\t' | '\r' | '//' | '{ }') -> skip;
-
-BEGIN				: 'begin' ;
-
-END					: 'end';
-
-IF					: 'if';
-
-THEN 				: 'then';
-
-ELSE 				: 'else';
-
-WHILE				: 'while';
-
-DO					: 'do';
+ATB	:	':='
+	;
+	
+IF	: 	'if'
+	;
+	
+WS	:	(' ' | '\n' | '\t' | '\r') -> skip;
 
 
 
