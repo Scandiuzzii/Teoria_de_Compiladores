@@ -4,12 +4,11 @@ grammar miniPascalLang;
 <<<<<<< HEAD
 
 @header{
-	import data_structure.PascalSymbol;
-	import data_structure.PascalVariable;
-	import data_structure.PascalSymbolTable;
-	import exceptions.PascalSemanticException;
+	import PascalSymbol;
+	import PascalVariable;
+	import PascalSymbolTable;
+	import PascalSemanticException;
 	import java.util.ArrayList;
-
 }
 
 @members{
@@ -18,18 +17,22 @@ grammar miniPascalLang;
 	private String _varValue;
 	private PascalSymbolTable symbolTable = new PascalSymbolTable();
 	private PascalSymbol symbol;
+<<<<<<< HEAD
 	
 	public void verificaID(String id){
 		if(!symbolTable.exists(id)){
 			throw new PascalSemanticException("Symbol "+_varName+" already declared");
 		}
 	}
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 }
 
 
 //PROGRAMA E BLOCO
 
 
+<<<<<<< HEAD
 programa	: PROGRAM ident  { verificaID(_input.LT(-1).getText()); }SC bloco;
 =======
 //PROGRAMA E BLOCO
@@ -37,6 +40,9 @@ programa	: PROGRAM ident  { verificaID(_input.LT(-1).getText()); }SC bloco;
 
 programa	: 'program' ident SC bloco;
 >>>>>>> parent of 08655c7... Em andamento
+=======
+programa	: PROGRAM ident SC bloco;
+>>>>>>> parent of 943c220... Em andamento v4
 
 bloco 		: partDeclVar? partDecSubRot? comandoComposto;
 
@@ -54,7 +60,7 @@ listIdent			: ident {
 										if(!symbolTable.exists(_varName)){
 											symbolTable.add(symbol);
 										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+"2 already declared");
+											throw new PascalSemanticException("Symbol"+ _varName+"already declared");
 										}
 										} 
 									(V ident { 
@@ -64,7 +70,7 @@ listIdent			: ident {
 										if(!symbolTable.exists(_varName)){
 											symbolTable.add(symbol);
 										}else {
-											throw new PascalSemanticException("Symbol"+ _varName+" 3 already declared");
+											throw new PascalSemanticException("Symbol"+ _varName+"already declared");
 										}
 								})*;
 =======
@@ -73,6 +79,7 @@ listIdent			: ident (V ident)*;
 
 partDecSubRot		: (declProced SC)*;
 
+<<<<<<< HEAD
 declProced			: 'procedure' ident { verificaID(_input.LT(-1).getText()); }
 									paramFormais? SC bloco;
 									
@@ -85,6 +92,13 @@ secParamFormais		: VAR ? listIdent TD ident { verificaID(_input.LT(-1).getText()
 secParamFormais		: 'var' ? listIdent TD ident;
 					
 >>>>>>> parent of 08655c7... Em andamento
+=======
+declProced			: 'procedure' ident paramFormais? SC bloco;
+
+paramFormais		: OP secParamFormais (SC secParamFormais)* CP;
+
+secParamFormais		: VAR ? listIdent TD ident;
+>>>>>>> parent of 943c220... Em andamento v4
 
 //COMANDOS
 
@@ -92,6 +106,7 @@ comandoComposto		: 'begin' comando (SC comando)* 'end';
 
 comando				: atribuicao | chamadaProcedimento | comandoComposto | comandoCondicional | comandoRepetitivo;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 comandoComposto		: BEGIN comando (SC comando)* END {System.out.println("Comando composto reconhecido!");} ;
 
@@ -113,6 +128,17 @@ comandoCondicional  : 'if'expressao 'then' comando ('else' comando)?;
 
 comandoRepetitivo 	: 'while' expressao 'do' comando;
 >>>>>>> parent of 08655c7... Em andamento
+=======
+comandoComposto		: BEGIN comando (SC comando)* END ;
+
+atribuicao			: variavel TDE expressao;
+
+chamadaProcedimento	: ident (OP listExpressoes CP)?;
+
+comandoCondicional  : IF expressao THEN comando (ELSE comando)?;
+
+comandoRepetitivo 	: WHILE expressao DO comando;
+>>>>>>> parent of 943c220... Em andamento v4
 
 
 //EXPRESSOES
@@ -127,8 +153,12 @@ termo 				: fator(('*' | 'div' | 'and' )fator)*;
 
 fator				: variavel | numero | OP expressao CP | NOT fator ;
 
+<<<<<<< HEAD
 variavel			: ident { verificaID(_input.LT(-1).getText()); } 
 						| ident  { verificaID(_input.LT(-1).getText()); };
+=======
+variavel			: ident | ident (expressao)?;
+>>>>>>> parent of 943c220... Em andamento v4
 
 listExpressoes		: expressao (V expressao)*;
 

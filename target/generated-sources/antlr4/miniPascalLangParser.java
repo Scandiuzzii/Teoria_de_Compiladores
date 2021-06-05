@@ -1,15 +1,18 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
 <<<<<<< HEAD
 
-	import data_structure.PascalSymbol;
-	import data_structure.PascalVariable;
-	import data_structure.PascalSymbolTable;
-	import exceptions.PascalSemanticException;
+	import PascalSymbol;
+	import PascalVariable;
+	import PascalSymbolTable;
+	import PascalSemanticException;
 	import java.util.ArrayList;
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -77,12 +80,15 @@ public class miniPascalLangParser extends Parser {
 		private String _varValue;
 		private PascalSymbolTable symbolTable = new PascalSymbolTable();
 		private PascalSymbol symbol;
+<<<<<<< HEAD
 		
 		public void verificaID(String id){
 			if(!symbolTable.exists(id)){
 				throw new PascalSemanticException("Symbol "+_varName+" already declared");
 			}
 		}
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
@@ -120,9 +126,14 @@ public class miniPascalLangParser extends Parser {
 			{
 			setState(50); match(T__11);
 			setState(51); ident();
+<<<<<<< HEAD
 			 verificaID(_input.LT(-1).getText()); 
 			setState(53); match(SC);
 			setState(54); bloco();
+=======
+			setState(52); match(SC);
+			setState(53); bloco();
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -167,23 +178,23 @@ public class miniPascalLangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57);
+			setState(56);
 			_la = _input.LA(1);
 			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__19) | (1L << T__18) | (1L << T__17) | (1L << T__12) | (1L << T__0))) != 0)) {
 				{
-				setState(56); partDeclVar();
+				setState(55); partDeclVar();
 				}
 			}
 
-			setState(60);
+			setState(59);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				{
-				setState(59); partDecSubRot();
+				setState(58); partDecSubRot();
 				}
 				break;
 			}
-			setState(62); comandoComposto();
+			setState(61); comandoComposto();
 			}
 		}
 		catch (RecognitionException re) {
@@ -229,24 +240,24 @@ public class miniPascalLangParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64); declVar();
-			setState(69);
+			setState(63); declVar();
+			setState(68);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
-					setState(65); match(SC);
-					setState(66); declVar();
+					setState(64); match(SC);
+					setState(65); declVar();
 					}
 					} 
 				}
-				setState(71);
+				setState(70);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
 			}
-			setState(72); match(SC);
+			setState(71); match(SC);
 			}
 		}
 		catch (RecognitionException re) {
@@ -287,8 +298,8 @@ public class miniPascalLangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(74); tipo();
-			setState(75); listIdent();
+			setState(73); tipo();
+			setState(74); listIdent();
 			}
 		}
 		catch (RecognitionException re) {
@@ -335,7 +346,11 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(77); ident();
+=======
+			setState(76); ident();
+>>>>>>> parent of 943c220... Em andamento v4
 
 													_varName = _input.LT(-1).getText();
 													_varValue = null;
@@ -343,22 +358,31 @@ public class miniPascalLangParser extends Parser {
 													if(!symbolTable.exists(_varName)){
 														symbolTable.add(symbol);
 													}else {
-														throw new PascalSemanticException("Symbol"+ _varName+"2 already declared");
+														throw new PascalSemanticException("Symbol"+ _varName+"already declared");
 													}
 													
+<<<<<<< HEAD
 			setState(85);
 =======
 			setState(76); ident();
 			setState(81);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(84);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==V) {
 				{
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(79); match(V);
 				setState(80); ident();
+=======
+				setState(78); match(V);
+				setState(79); ident();
+>>>>>>> parent of 943c220... Em andamento v4
 				 
 														_varName = _input.LT(-1).getText();
 														_varValue = null;
@@ -366,11 +390,12 @@ public class miniPascalLangParser extends Parser {
 														if(!symbolTable.exists(_varName)){
 															symbolTable.add(symbol);
 														}else {
-															throw new PascalSemanticException("Symbol"+ _varName+" 3 already declared");
+															throw new PascalSemanticException("Symbol"+ _varName+"already declared");
 														}
 												
 				}
 				}
+<<<<<<< HEAD
 				setState(87);
 =======
 				setState(77); match(V);
@@ -379,6 +404,9 @@ public class miniPascalLangParser extends Parser {
 				}
 				setState(83);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(86);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -428,15 +456,20 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(93);
 =======
 			setState(89);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(92);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__16) {
 				{
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(88); declProced();
 				setState(89); match(SC);
@@ -450,6 +483,13 @@ public class miniPascalLangParser extends Parser {
 				}
 				setState(91);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(87); declProced();
+				setState(88); match(SC);
+				}
+				}
+				setState(94);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -499,17 +539,24 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(96); match(T__0);
 			setState(97); ident();
 			 verificaID(_input.LT(-1).getText()); 
 			setState(100);
+=======
+			setState(95); match(T__0);
+			setState(96); ident();
+			setState(98);
+>>>>>>> parent of 943c220... Em andamento v4
 			_la = _input.LA(1);
 			if (_la==OP) {
 				{
-				setState(99); paramFormais();
+				setState(97); paramFormais();
 				}
 			}
 
+<<<<<<< HEAD
 			setState(102); match(SC);
 			setState(103); bloco();
 =======
@@ -526,6 +573,10 @@ public class miniPascalLangParser extends Parser {
 			setState(97); match(SC);
 			setState(98); bloco();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(100); match(SC);
+			setState(101); bloco();
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -574,6 +625,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(105); match(OP);
 			setState(106); secParamFormais();
 			setState(111);
@@ -582,20 +634,31 @@ public class miniPascalLangParser extends Parser {
 			setState(101); secParamFormais();
 			setState(106);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(103); match(OP);
+			setState(104); secParamFormais();
+			setState(109);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==SC) {
 				{
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(107); match(SC);
 				setState(108); secParamFormais();
+=======
+				setState(105); match(SC);
+				setState(106); secParamFormais();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				}
-				setState(113);
+				setState(111);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
+<<<<<<< HEAD
 			setState(114); match(CP);
 =======
 				setState(102); match(SC);
@@ -608,6 +671,9 @@ public class miniPascalLangParser extends Parser {
 			}
 			setState(109); match(CP);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(112); match(CP);
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -651,13 +717,18 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(117);
 =======
 			setState(112);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(115);
+>>>>>>> parent of 943c220... Em andamento v4
 			_la = _input.LA(1);
 			if (_la==T__20) {
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(116); match(VAR);
 				}
@@ -738,6 +809,15 @@ public class miniPascalLangParser extends Parser {
 			}
 			setState(127); match(T__6);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(114); match(VAR);
+				}
+			}
+
+			setState(117); listIdent();
+			setState(118); match(TD);
+			setState(119); ident();
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -786,11 +866,16 @@ public class miniPascalLangParser extends Parser {
 		enterRule(_localctx, 20, RULE_comando);
 		try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(129);
+=======
+			setState(126);
+>>>>>>> parent of 943c220... Em andamento v4
 			switch ( getInterpreter().adaptivePredict(_input,8,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
+<<<<<<< HEAD
 				setState(124); atribuicao();
 =======
 			setState(134);
@@ -800,46 +885,65 @@ public class miniPascalLangParser extends Parser {
 				{
 				setState(129); atribuicao();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(121); atribuicao();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(125); chamadaProcedimento();
 =======
 				setState(130); chamadaProcedimento();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(122); chamadaProcedimento();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(126); comandoComposto();
 =======
 				setState(131); comandoComposto();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(123); comandoComposto();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(127); comandoCondicional();
 =======
 				setState(132); comandoCondicional();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(124); comandoCondicional();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(128); comandoRepetitivo();
 =======
 				setState(133); comandoRepetitivo();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(125); comandoRepetitivo();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			}
@@ -890,24 +994,23 @@ public class miniPascalLangParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(131); match(BEGIN);
-			setState(132); comando();
-			setState(137);
+			setState(128); match(BEGIN);
+			setState(129); comando();
+			setState(134);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==SC) {
 				{
 				{
-				setState(133); match(SC);
-				setState(134); comando();
+				setState(130); match(SC);
+				setState(131); comando();
 				}
 				}
-				setState(139);
+				setState(136);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(140); match(END);
-			System.out.println("Comando composto reconhecido!");
+			setState(137); match(END);
 			}
 		}
 		catch (RecognitionException re) {
@@ -952,6 +1055,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(143); variavel();
 			setState(144); match(TDE);
 			setState(145); expressao();
@@ -961,6 +1065,11 @@ public class miniPascalLangParser extends Parser {
 			setState(137); match(TDE);
 			setState(138); expressao();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(139); variavel();
+			setState(140); match(TDE);
+			setState(141); expressao();
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -1005,6 +1114,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(148); ident();
 			 verificaID(_input.LT(-1).getText()); 
 			setState(154);
@@ -1024,10 +1134,19 @@ public class miniPascalLangParser extends Parser {
 				setState(142); listExpressoes();
 				setState(143); match(CP);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(143); ident();
+			setState(148);
+			_la = _input.LA(1);
+			if (_la==OP) {
+				{
+				setState(144); match(OP);
+				setState(145); listExpressoes();
+				setState(146); match(CP);
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 			}
 
-			System.out.println("Comando chamada de procedimento reconhecido!");
 			}
 		}
 		catch (RecognitionException re) {
@@ -1072,6 +1191,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(158); match(IF);
 			setState(159); expressao();
 			setState(160); match(THEN);
@@ -1094,10 +1214,21 @@ public class miniPascalLangParser extends Parser {
 				setState(151); match(T__9);
 				setState(152); comando();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(150); match(IF);
+			setState(151); expressao();
+			setState(152); match(THEN);
+			setState(153); comando();
+			setState(156);
+			switch ( getInterpreter().adaptivePredict(_input,11,_ctx) ) {
+			case 1:
+				{
+				setState(154); match(ELSE);
+				setState(155); comando();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			}
-			System.out.println("Comando condicional reconhecido!");
 			}
 		}
 		catch (RecognitionException re) {
@@ -1139,6 +1270,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(168); match(WHILE);
 			setState(169); expressao();
 			setState(170); match(DO);
@@ -1150,6 +1282,12 @@ public class miniPascalLangParser extends Parser {
 			setState(157); match(T__7);
 			setState(158); comando();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(158); match(WHILE);
+			setState(159); expressao();
+			setState(160); match(DO);
+			setState(161); comando();
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -1195,6 +1333,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(174); expressaoSimples();
 			setState(178);
 			_la = _input.LA(1);
@@ -1211,6 +1350,15 @@ public class miniPascalLangParser extends Parser {
 				setState(161); relacao();
 				setState(162); expressaoSimples();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(163); expressaoSimples();
+			setState(167);
+			switch ( getInterpreter().adaptivePredict(_input,12,_ctx) ) {
+			case 1:
+				{
+				setState(164); relacao();
+				setState(165); expressaoSimples();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 			}
 
@@ -1250,10 +1398,14 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(180); match(Operacao);
 =======
 			setState(166); match(Operacao);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(169); match(Operacao);
+>>>>>>> parent of 943c220... Em andamento v4
 			}
 		}
 		catch (RecognitionException re) {
@@ -1296,18 +1448,26 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(183);
 =======
 			setState(169);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(172);
+>>>>>>> parent of 943c220... Em andamento v4
 			_la = _input.LA(1);
 			if (_la==T__3 || _la==T__1) {
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(182);
 =======
 				setState(168);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(171);
+>>>>>>> parent of 943c220... Em andamento v4
 				_la = _input.LA(1);
 				if ( !(_la==T__3 || _la==T__1) ) {
 				_errHandler.recoverInline(this);
@@ -1317,8 +1477,13 @@ public class miniPascalLangParser extends Parser {
 			}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(185); termo();
 			setState(190);
+=======
+			setState(174); termo();
+			setState(179);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MAIS) | (1L << MENOS) | (1L << OR))) != 0)) {
@@ -1343,18 +1508,30 @@ public class miniPascalLangParser extends Parser {
 				if ( _alt==1 ) {
 					{
 					{
+<<<<<<< HEAD
 					setState(172);
+=======
+					setState(175);
+>>>>>>> parent of 943c220... Em andamento v4
 					_la = _input.LA(1);
 					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__13) | (1L << T__3) | (1L << T__1))) != 0)) ) {
 					_errHandler.recoverInline(this);
 					}
 					consume();
+<<<<<<< HEAD
 					setState(173); termo();
 					}
 					} 
 				}
 				setState(178);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+					setState(176); termo();
+					}
+					} 
+				}
+				setState(181);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1400,8 +1577,13 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(193); fator();
 			setState(198);
+=======
+			setState(182); fator();
+			setState(187);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << VEZES) | (1L << DIV) | (1L << AND))) != 0)) {
@@ -1426,18 +1608,30 @@ public class miniPascalLangParser extends Parser {
 				if ( _alt==1 ) {
 					{
 					{
+<<<<<<< HEAD
 					setState(180);
+=======
+					setState(183);
+>>>>>>> parent of 943c220... Em andamento v4
 					_la = _input.LA(1);
 					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__10) | (1L << T__5) | (1L << T__4))) != 0)) ) {
 					_errHandler.recoverInline(this);
 					}
 					consume();
+<<<<<<< HEAD
 					setState(181); fator();
 					}
 					} 
 				}
 				setState(186);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+					setState(184); fator();
+					}
+					} 
+				}
+				setState(189);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1489,34 +1683,47 @@ public class miniPascalLangParser extends Parser {
 		enterRule(_localctx, 38, RULE_fator);
 		try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(209);
 =======
 			setState(195);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(198);
+>>>>>>> parent of 943c220... Em andamento v4
 			switch (_input.LA(1)) {
 			case Letras:
 				enterOuterAlt(_localctx, 1);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(201); variavel();
 =======
 				setState(187); variavel();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(190); variavel();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case Digitos:
 				enterOuterAlt(_localctx, 2);
 				{
 <<<<<<< HEAD
+<<<<<<< HEAD
 				setState(202); numero();
 =======
 				setState(188); numero();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(191); numero();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case OP:
 				enterOuterAlt(_localctx, 3);
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(203); match(OP);
 				setState(204); expressao();
@@ -1526,11 +1733,17 @@ public class miniPascalLangParser extends Parser {
 				setState(190); expressao();
 				setState(191); match(CP);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(192); match(OP);
+				setState(193); expressao();
+				setState(194); match(CP);
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case NOT:
 				enterOuterAlt(_localctx, 4);
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(207); match(NOT);
 				setState(208); fator();
@@ -1538,6 +1751,10 @@ public class miniPascalLangParser extends Parser {
 				setState(193); match(NOT);
 				setState(194); fator();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(196); match(NOT);
+				setState(197); fator();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			default:
@@ -1578,6 +1795,7 @@ public class miniPascalLangParser extends Parser {
 		enterRule(_localctx, 40, RULE_variavel);
 		try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(217);
 			switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
 			case 1:
@@ -1593,11 +1811,20 @@ public class miniPascalLangParser extends Parser {
 				{
 				setState(197); ident();
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(205);
+			switch ( getInterpreter().adaptivePredict(_input,18,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(200); ident();
+>>>>>>> parent of 943c220... Em andamento v4
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(214); ident();
 				 verificaID(_input.LT(-1).getText()); 
@@ -1608,6 +1835,14 @@ public class miniPascalLangParser extends Parser {
 				case 1:
 					{
 					setState(199); expressao();
+=======
+				setState(201); ident();
+				setState(203);
+				switch ( getInterpreter().adaptivePredict(_input,17,_ctx) ) {
+				case 1:
+					{
+					setState(202); expressao();
+>>>>>>> parent of 943c220... Em andamento v4
 					}
 					break;
 				}
@@ -1660,17 +1895,23 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(219); expressao();
 			setState(224);
 =======
 			setState(204); expressao();
 			setState(209);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(207); expressao();
+			setState(212);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==V) {
 				{
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(220); match(V);
 				setState(221); expressao();
@@ -1684,6 +1925,13 @@ public class miniPascalLangParser extends Parser {
 				}
 				setState(211);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(208); match(V);
+				setState(209); expressao();
+				}
+				}
+				setState(214);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1727,17 +1975,23 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(227); match(Digitos);
 			setState(231);
 =======
 			setState(212); match(Digitos);
 			setState(216);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+			setState(215); match(Digitos);
+			setState(219);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==Digitos) {
 				{
 				{
+<<<<<<< HEAD
 <<<<<<< HEAD
 				setState(228); match(Digitos);
 				}
@@ -1749,6 +2003,12 @@ public class miniPascalLangParser extends Parser {
 				}
 				setState(218);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(216); match(Digitos);
+				}
+				}
+				setState(221);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1796,6 +2056,7 @@ public class miniPascalLangParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(234); match(Letras);
 			setState(238);
 			_errHandler.sync(this);
@@ -1815,13 +2076,21 @@ public class miniPascalLangParser extends Parser {
 =======
 			setState(219); match(Letras);
 			setState(223);
+=======
+			setState(222); match(Letras);
+			setState(226);
+>>>>>>> parent of 943c220... Em andamento v4
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,21,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					{
 					{
+<<<<<<< HEAD
 					setState(220);
+=======
+					setState(223);
+>>>>>>> parent of 943c220... Em andamento v4
 					_la = _input.LA(1);
 					if ( !(_la==Digitos || _la==Letras) ) {
 					_errHandler.recoverInline(this);
@@ -1830,8 +2099,12 @@ public class miniPascalLangParser extends Parser {
 					}
 					} 
 				}
+<<<<<<< HEAD
 				setState(225);
 >>>>>>> parent of 08655c7... Em andamento
+=======
+				setState(228);
+>>>>>>> parent of 943c220... Em andamento v4
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -1869,33 +2142,53 @@ public class miniPascalLangParser extends Parser {
 		int _la;
 		try {
 <<<<<<< HEAD
+<<<<<<< HEAD
 			setState(249);
+=======
+			setState(237);
+>>>>>>> parent of 943c220... Em andamento v4
 			switch (_input.LA(1)) {
 			case INTEGER:
 				enterOuterAlt(_localctx, 1);
 				{
+<<<<<<< HEAD
 				setState(241); match(INTEGER);
+=======
+				setState(229); match(INTEGER);
+>>>>>>> parent of 943c220... Em andamento v4
 				_tipo = PascalVariable.INTEGER;
 				}
 				break;
 			case REAL:
 				enterOuterAlt(_localctx, 2);
 				{
+<<<<<<< HEAD
 				setState(243); match(REAL);
+=======
+				setState(231); match(REAL);
+>>>>>>> parent of 943c220... Em andamento v4
 				_tipo = PascalVariable.REAL;
 				}
 				break;
 			case BOOLEAN:
 				enterOuterAlt(_localctx, 3);
 				{
+<<<<<<< HEAD
 				setState(245); match(BOOLEAN);
+=======
+				setState(233); match(BOOLEAN);
+>>>>>>> parent of 943c220... Em andamento v4
 				_tipo = PascalVariable.BOOLEAN;
 				}
 				break;
 			case STRING:
 				enterOuterAlt(_localctx, 4);
 				{
+<<<<<<< HEAD
 				setState(247); match(STRING);
+=======
+				setState(235); match(STRING);
+>>>>>>> parent of 943c220... Em andamento v4
 				_tipo = PascalVariable.STRING;
 				}
 				break;
@@ -1925,6 +2218,7 @@ public class miniPascalLangParser extends Parser {
 	}
 
 	public static final String _serializedATN =
+<<<<<<< HEAD
 <<<<<<< HEAD
 		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3$\u00fe\4\2\t\2\4"+
 		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
@@ -2083,6 +2377,86 @@ public class miniPascalLangParser extends Parser {
 		"\2\u00e4\u00e5\t\6\2\2\u00e5\63\3\2\2\2\30:=FS[alr~\u0088\u0093\u009b"+
 		"\u00a6\u00ab\u00b2\u00ba\u00c5\u00ca\u00cc\u00d3\u00da\u00e1";
 >>>>>>> parent of 08655c7... Em andamento
+=======
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3$\u00f2\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22"+
+		"\4\23\t\23\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31\t\31"+
+		"\4\32\t\32\3\2\3\2\3\2\3\2\3\2\3\3\5\3;\n\3\3\3\5\3>\n\3\3\3\3\3\3\4\3"+
+		"\4\3\4\7\4E\n\4\f\4\16\4H\13\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6"+
+		"\3\6\7\6U\n\6\f\6\16\6X\13\6\3\7\3\7\3\7\7\7]\n\7\f\7\16\7`\13\7\3\b\3"+
+		"\b\3\b\5\be\n\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\7\tn\n\t\f\t\16\tq\13\t\3"+
+		"\t\3\t\3\n\5\nv\n\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13\5\13\u0081"+
+		"\n\13\3\f\3\f\3\f\3\f\7\f\u0087\n\f\f\f\16\f\u008a\13\f\3\f\3\f\3\r\3"+
+		"\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\5\16\u0097\n\16\3\17\3\17\3\17\3\17"+
+		"\3\17\3\17\5\17\u009f\n\17\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21"+
+		"\5\21\u00aa\n\21\3\22\3\22\3\23\5\23\u00af\n\23\3\23\3\23\3\23\7\23\u00b4"+
+		"\n\23\f\23\16\23\u00b7\13\23\3\24\3\24\3\24\7\24\u00bc\n\24\f\24\16\24"+
+		"\u00bf\13\24\3\25\3\25\3\25\3\25\3\25\3\25\3\25\3\25\5\25\u00c9\n\25\3"+
+		"\26\3\26\3\26\5\26\u00ce\n\26\5\26\u00d0\n\26\3\27\3\27\3\27\7\27\u00d5"+
+		"\n\27\f\27\16\27\u00d8\13\27\3\30\3\30\7\30\u00dc\n\30\f\30\16\30\u00df"+
+		"\13\30\3\31\3\31\7\31\u00e3\n\31\f\31\16\31\u00e6\13\31\3\32\3\32\3\32"+
+		"\3\32\3\32\3\32\3\32\3\32\5\32\u00f0\n\32\3\32\2\2\33\2\4\6\b\n\f\16\20"+
+		"\22\24\26\30\32\34\36 \"$&(*,.\60\62\2\6\3\2\13\f\3\2\13\r\3\2\16\20\3"+
+		"\2\21\22\u00f6\2\64\3\2\2\2\4:\3\2\2\2\6A\3\2\2\2\bK\3\2\2\2\nN\3\2\2"+
+		"\2\f^\3\2\2\2\16a\3\2\2\2\20i\3\2\2\2\22u\3\2\2\2\24\u0080\3\2\2\2\26"+
+		"\u0082\3\2\2\2\30\u008d\3\2\2\2\32\u0091\3\2\2\2\34\u0098\3\2\2\2\36\u00a0"+
+		"\3\2\2\2 \u00a5\3\2\2\2\"\u00ab\3\2\2\2$\u00ae\3\2\2\2&\u00b8\3\2\2\2"+
+		"(\u00c8\3\2\2\2*\u00cf\3\2\2\2,\u00d1\3\2\2\2.\u00d9\3\2\2\2\60\u00e0"+
+		"\3\2\2\2\62\u00ef\3\2\2\2\64\65\7\4\2\2\65\66\5\60\31\2\66\67\7\25\2\2"+
+		"\678\5\4\3\28\3\3\2\2\29;\5\6\4\2:9\3\2\2\2:;\3\2\2\2;=\3\2\2\2<>\5\f"+
+		"\7\2=<\3\2\2\2=>\3\2\2\2>?\3\2\2\2?@\5\26\f\2@\5\3\2\2\2AF\5\b\5\2BC\7"+
+		"\25\2\2CE\5\b\5\2DB\3\2\2\2EH\3\2\2\2FD\3\2\2\2FG\3\2\2\2GI\3\2\2\2HF"+
+		"\3\2\2\2IJ\7\25\2\2J\7\3\2\2\2KL\5\62\32\2LM\5\n\6\2M\t\3\2\2\2NO\5\60"+
+		"\31\2OV\b\6\1\2PQ\7\26\2\2QR\5\60\31\2RS\b\6\1\2SU\3\2\2\2TP\3\2\2\2U"+
+		"X\3\2\2\2VT\3\2\2\2VW\3\2\2\2W\13\3\2\2\2XV\3\2\2\2YZ\5\16\b\2Z[\7\25"+
+		"\2\2[]\3\2\2\2\\Y\3\2\2\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_\r\3\2\2\2`^"+
+		"\3\2\2\2ab\7\3\2\2bd\5\60\31\2ce\5\20\t\2dc\3\2\2\2de\3\2\2\2ef\3\2\2"+
+		"\2fg\7\25\2\2gh\5\4\3\2h\17\3\2\2\2ij\7\30\2\2jo\5\22\n\2kl\7\25\2\2l"+
+		"n\5\22\n\2mk\3\2\2\2nq\3\2\2\2om\3\2\2\2op\3\2\2\2pr\3\2\2\2qo\3\2\2\2"+
+		"rs\7\31\2\2s\21\3\2\2\2tv\7\27\2\2ut\3\2\2\2uv\3\2\2\2vw\3\2\2\2wx\5\n"+
+		"\6\2xy\7\32\2\2yz\5\60\31\2z\23\3\2\2\2{\u0081\5\30\r\2|\u0081\5\32\16"+
+		"\2}\u0081\5\26\f\2~\u0081\5\34\17\2\177\u0081\5\36\20\2\u0080{\3\2\2\2"+
+		"\u0080|\3\2\2\2\u0080}\3\2\2\2\u0080~\3\2\2\2\u0080\177\3\2\2\2\u0081"+
+		"\25\3\2\2\2\u0082\u0083\7\36\2\2\u0083\u0088\5\24\13\2\u0084\u0085\7\25"+
+		"\2\2\u0085\u0087\5\24\13\2\u0086\u0084\3\2\2\2\u0087\u008a\3\2\2\2\u0088"+
+		"\u0086\3\2\2\2\u0088\u0089\3\2\2\2\u0089\u008b\3\2\2\2\u008a\u0088\3\2"+
+		"\2\2\u008b\u008c\7\37\2\2\u008c\27\3\2\2\2\u008d\u008e\5*\26\2\u008e\u008f"+
+		"\7\33\2\2\u008f\u0090\5 \21\2\u0090\31\3\2\2\2\u0091\u0096\5\60\31\2\u0092"+
+		"\u0093\7\30\2\2\u0093\u0094\5,\27\2\u0094\u0095\7\31\2\2\u0095\u0097\3"+
+		"\2\2\2\u0096\u0092\3\2\2\2\u0096\u0097\3\2\2\2\u0097\33\3\2\2\2\u0098"+
+		"\u0099\7 \2\2\u0099\u009a\5 \21\2\u009a\u009b\7!\2\2\u009b\u009e\5\24"+
+		"\13\2\u009c\u009d\7\"\2\2\u009d\u009f\5\24\13\2\u009e\u009c\3\2\2\2\u009e"+
+		"\u009f\3\2\2\2\u009f\35\3\2\2\2\u00a0\u00a1\7#\2\2\u00a1\u00a2\5 \21\2"+
+		"\u00a2\u00a3\7$\2\2\u00a3\u00a4\5\24\13\2\u00a4\37\3\2\2\2\u00a5\u00a9"+
+		"\5$\23\2\u00a6\u00a7\5\"\22\2\u00a7\u00a8\5$\23\2\u00a8\u00aa\3\2\2\2"+
+		"\u00a9\u00a6\3\2\2\2\u00a9\u00aa\3\2\2\2\u00aa!\3\2\2\2\u00ab\u00ac\7"+
+		"\n\2\2\u00ac#\3\2\2\2\u00ad\u00af\t\2\2\2\u00ae\u00ad\3\2\2\2\u00ae\u00af"+
+		"\3\2\2\2\u00af\u00b0\3\2\2\2\u00b0\u00b5\5&\24\2\u00b1\u00b2\t\3\2\2\u00b2"+
+		"\u00b4\5&\24\2\u00b3\u00b1\3\2\2\2\u00b4\u00b7\3\2\2\2\u00b5\u00b3\3\2"+
+		"\2\2\u00b5\u00b6\3\2\2\2\u00b6%\3\2\2\2\u00b7\u00b5\3\2\2\2\u00b8\u00bd"+
+		"\5(\25\2\u00b9\u00ba\t\4\2\2\u00ba\u00bc\5(\25\2\u00bb\u00b9\3\2\2\2\u00bc"+
+		"\u00bf\3\2\2\2\u00bd\u00bb\3\2\2\2\u00bd\u00be\3\2\2\2\u00be\'\3\2\2\2"+
+		"\u00bf\u00bd\3\2\2\2\u00c0\u00c9\5*\26\2\u00c1\u00c9\5.\30\2\u00c2\u00c3"+
+		"\7\30\2\2\u00c3\u00c4\5 \21\2\u00c4\u00c5\7\31\2\2\u00c5\u00c9\3\2\2\2"+
+		"\u00c6\u00c7\7\34\2\2\u00c7\u00c9\5(\25\2\u00c8\u00c0\3\2\2\2\u00c8\u00c1"+
+		"\3\2\2\2\u00c8\u00c2\3\2\2\2\u00c8\u00c6\3\2\2\2\u00c9)\3\2\2\2\u00ca"+
+		"\u00d0\5\60\31\2\u00cb\u00cd\5\60\31\2\u00cc\u00ce\5 \21\2\u00cd\u00cc"+
+		"\3\2\2\2\u00cd\u00ce\3\2\2\2\u00ce\u00d0\3\2\2\2\u00cf\u00ca\3\2\2\2\u00cf"+
+		"\u00cb\3\2\2\2\u00d0+\3\2\2\2\u00d1\u00d6\5 \21\2\u00d2\u00d3\7\26\2\2"+
+		"\u00d3\u00d5\5 \21\2\u00d4\u00d2\3\2\2\2\u00d5\u00d8\3\2\2\2\u00d6\u00d4"+
+		"\3\2\2\2\u00d6\u00d7\3\2\2\2\u00d7-\3\2\2\2\u00d8\u00d6\3\2\2\2\u00d9"+
+		"\u00dd\7\21\2\2\u00da\u00dc\7\21\2\2\u00db\u00da\3\2\2\2\u00dc\u00df\3"+
+		"\2\2\2\u00dd\u00db\3\2\2\2\u00dd\u00de\3\2\2\2\u00de/\3\2\2\2\u00df\u00dd"+
+		"\3\2\2\2\u00e0\u00e4\7\22\2\2\u00e1\u00e3\t\5\2\2\u00e2\u00e1\3\2\2\2"+
+		"\u00e3\u00e6\3\2\2\2\u00e4\u00e2\3\2\2\2\u00e4\u00e5\3\2\2\2\u00e5\61"+
+		"\3\2\2\2\u00e6\u00e4\3\2\2\2\u00e7\u00e8\7\5\2\2\u00e8\u00f0\b\32\1\2"+
+		"\u00e9\u00ea\7\6\2\2\u00ea\u00f0\b\32\1\2\u00eb\u00ec\7\7\2\2\u00ec\u00f0"+
+		"\b\32\1\2\u00ed\u00ee\7\t\2\2\u00ee\u00f0\b\32\1\2\u00ef\u00e7\3\2\2\2"+
+		"\u00ef\u00e9\3\2\2\2\u00ef\u00eb\3\2\2\2\u00ef\u00ed\3\2\2\2\u00f0\63"+
+		"\3\2\2\2\31:=FV^dou\u0080\u0088\u0096\u009e\u00a9\u00ae\u00b5\u00bd\u00c8"+
+		"\u00cd\u00cf\u00d6\u00dd\u00e4\u00ef";
+>>>>>>> parent of 943c220... Em andamento v4
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

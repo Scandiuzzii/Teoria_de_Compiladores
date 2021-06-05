@@ -1,6 +1,7 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	import data_structure.PascalSymbol;
 	import data_structure.PascalVariable;
 	import data_structure.PascalSymbolTable;
@@ -11,6 +12,15 @@
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
+=======
+	import PascalSymbol;
+	import PascalVariable;
+	import PascalSymbolTable;
+	import PascalSemanticException;
+	import java.util.ArrayList;
+
+
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ErrorNode;

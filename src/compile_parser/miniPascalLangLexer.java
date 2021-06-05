@@ -8,9 +8,12 @@ package compile_parser;
 	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -109,12 +112,15 @@ public class miniPascalLangLexer extends Lexer {
 		private String _varValue;
 		private PascalSymbolTable symbolTable = new PascalSymbolTable();
 		private PascalSymbol symbol;
+<<<<<<< HEAD
 		
 		public void verificaID(String id){
 			if(!symbolTable.exists(id)){
 				throw new PascalSemanticException("Symbol "+_varName+" already declared");
 			}
 		}
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 
 
 =======

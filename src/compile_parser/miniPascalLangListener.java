@@ -8,9 +8,12 @@ package compile_parser;
 	import exceptions.PascalSemanticException;
 	import java.util.ArrayList;
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**

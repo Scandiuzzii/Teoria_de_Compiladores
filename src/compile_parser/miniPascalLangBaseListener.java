@@ -9,9 +9,12 @@ package compile_parser;
 	import java.util.ArrayList;
 
 
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of 08655c7... Em andamento
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
