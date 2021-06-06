@@ -33,7 +33,7 @@ programa				: 'program' ident SC bloco;
 			
 bloco 					: partDeclVar? partDecSubRot? comandoComposto;
 
-//Declarações
+//DeclaraÃ§Ãµes
 
 partDeclVar 				: declVar (SC declVar)*SC;
 
@@ -90,7 +90,7 @@ comandoCondicional			: 'IF' expressao 'then' comando ('else' comando)? {System.o
 
 comandoRepetitivo			: 'while' expressao 'do' comando {System.out.println("Reconheci um comando repetitivo");};
 
-//Expressões
+//ExpressÃµes
 expressao				: expressaoSimples (relacao expressaoSimples)?;
 
 relacao 				: Operacao;	
@@ -107,7 +107,7 @@ variavel				: ident { verificaID(_input.LT(-1).getText()); }
 			
 listExpressoes				: expressao (V expressao)*;		
 		
-//Números e idetificadores
+//NÃºmeros e idetificadores
 
 numero					: Digito (Digito)*;	
 		
@@ -154,3 +154,4 @@ TDE					: ':=';
 NOT					: 'not';
 
 WS					: (' ' | '\n' | '\t' | '\r') -> skip;
+					
