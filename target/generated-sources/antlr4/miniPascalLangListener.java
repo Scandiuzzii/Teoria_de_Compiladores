@@ -1,12 +1,4 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.4
-
-	import data_structure.PascalSymbol;
-	import data_structure.PascalVariable;
-	import data_structure.PascalSymbolTable;
-	import exceptions.PascalSemanticException;
-	import java.util.ArrayList;
-
-
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
@@ -16,25 +8,25 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface miniPascalLangListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#decl_procedimento}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#paramFormais}.
 	 * @param ctx the parse tree
 	 */
-	void enterDecl_procedimento(@NotNull miniPascalLangParser.Decl_procedimentoContext ctx);
+	void enterParamFormais(@NotNull miniPascalLangParser.ParamFormaisContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#decl_procedimento}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#paramFormais}.
 	 * @param ctx the parse tree
 	 */
-	void exitDecl_procedimento(@NotNull miniPascalLangParser.Decl_procedimentoContext ctx);
+	void exitParamFormais(@NotNull miniPascalLangParser.ParamFormaisContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#atribuicao}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#comandoCondicional}.
 	 * @param ctx the parse tree
 	 */
-	void enterAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx);
+	void enterComandoCondicional(@NotNull miniPascalLangParser.ComandoCondicionalContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#atribuicao}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#comandoCondicional}.
 	 * @param ctx the parse tree
 	 */
-	void exitAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx);
+	void exitComandoCondicional(@NotNull miniPascalLangParser.ComandoCondicionalContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#tipo}.
 	 * @param ctx the parse tree
@@ -45,16 +37,6 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTipo(@NotNull miniPascalLangParser.TipoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#chamada_procedimento}.
-	 * @param ctx the parse tree
-	 */
-	void enterChamada_procedimento(@NotNull miniPascalLangParser.Chamada_procedimentoContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#chamada_procedimento}.
-	 * @param ctx the parse tree
-	 */
-	void exitChamada_procedimento(@NotNull miniPascalLangParser.Chamada_procedimentoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#numero}.
 	 * @param ctx the parse tree
@@ -76,15 +58,15 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitBloco(@NotNull miniPascalLangParser.BlocoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#lista_identificadores}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#ident}.
 	 * @param ctx the parse tree
 	 */
-	void enterLista_identificadores(@NotNull miniPascalLangParser.Lista_identificadoresContext ctx);
+	void enterIdent(@NotNull miniPascalLangParser.IdentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#lista_identificadores}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#ident}.
 	 * @param ctx the parse tree
 	 */
-	void exitLista_identificadores(@NotNull miniPascalLangParser.Lista_identificadoresContext ctx);
+	void exitIdent(@NotNull miniPascalLangParser.IdentContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#programa}.
 	 * @param ctx the parse tree
@@ -106,16 +88,6 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitExpressao(@NotNull miniPascalLangParser.ExpressaoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#selec_parametr_formais}.
-	 * @param ctx the parse tree
-	 */
-	void enterSelec_parametr_formais(@NotNull miniPascalLangParser.Selec_parametr_formaisContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#selec_parametr_formais}.
-	 * @param ctx the parse tree
-	 */
-	void exitSelec_parametr_formais(@NotNull miniPascalLangParser.Selec_parametr_formaisContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#termo}.
 	 * @param ctx the parse tree
 	 */
@@ -126,55 +98,25 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitTermo(@NotNull miniPascalLangParser.TermoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#list_expressoes}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#chamadaProcedimento}.
 	 * @param ctx the parse tree
 	 */
-	void enterList_expressoes(@NotNull miniPascalLangParser.List_expressoesContext ctx);
+	void enterChamadaProcedimento(@NotNull miniPascalLangParser.ChamadaProcedimentoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#list_expressoes}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#chamadaProcedimento}.
 	 * @param ctx the parse tree
 	 */
-	void exitList_expressoes(@NotNull miniPascalLangParser.List_expressoesContext ctx);
+	void exitChamadaProcedimento(@NotNull miniPascalLangParser.ChamadaProcedimentoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#parametr_formais}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#relacao}.
 	 * @param ctx the parse tree
 	 */
-	void enterParametr_formais(@NotNull miniPascalLangParser.Parametr_formaisContext ctx);
+	void enterRelacao(@NotNull miniPascalLangParser.RelacaoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#parametr_formais}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#relacao}.
 	 * @param ctx the parse tree
 	 */
-	void exitParametr_formais(@NotNull miniPascalLangParser.Parametr_formaisContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#comando_condicional}.
-	 * @param ctx the parse tree
-	 */
-	void enterComando_condicional(@NotNull miniPascalLangParser.Comando_condicionalContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#comando_condicional}.
-	 * @param ctx the parse tree
-	 */
-	void exitComando_condicional(@NotNull miniPascalLangParser.Comando_condicionalContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#fator}.
-	 * @param ctx the parse tree
-	 */
-	void enterFator(@NotNull miniPascalLangParser.FatorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#fator}.
-	 * @param ctx the parse tree
-	 */
-	void exitFator(@NotNull miniPascalLangParser.FatorContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#decl_vars}.
-	 * @param ctx the parse tree
-	 */
-	void enterDecl_vars(@NotNull miniPascalLangParser.Decl_varsContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#decl_vars}.
-	 * @param ctx the parse tree
-	 */
-	void exitDecl_vars(@NotNull miniPascalLangParser.Decl_varsContext ctx);
+	void exitRelacao(@NotNull miniPascalLangParser.RelacaoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#comando}.
 	 * @param ctx the parse tree
@@ -186,15 +128,115 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitComando(@NotNull miniPascalLangParser.ComandoContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#comando_composto}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#declProced}.
 	 * @param ctx the parse tree
 	 */
-	void enterComando_composto(@NotNull miniPascalLangParser.Comando_compostoContext ctx);
+	void enterDeclProced(@NotNull miniPascalLangParser.DeclProcedContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#comando_composto}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#declProced}.
 	 * @param ctx the parse tree
 	 */
-	void exitComando_composto(@NotNull miniPascalLangParser.Comando_compostoContext ctx);
+	void exitDeclProced(@NotNull miniPascalLangParser.DeclProcedContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#partDeclVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterPartDeclVar(@NotNull miniPascalLangParser.PartDeclVarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#partDeclVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitPartDeclVar(@NotNull miniPascalLangParser.PartDeclVarContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#listExpressoes}.
+	 * @param ctx the parse tree
+	 */
+	void enterListExpressoes(@NotNull miniPascalLangParser.ListExpressoesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#listExpressoes}.
+	 * @param ctx the parse tree
+	 */
+	void exitListExpressoes(@NotNull miniPascalLangParser.ListExpressoesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#atribuicao}.
+	 * @param ctx the parse tree
+	 */
+	void enterAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#atribuicao}.
+	 * @param ctx the parse tree
+	 */
+	void exitAtribuicao(@NotNull miniPascalLangParser.AtribuicaoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
+	 * @param ctx the parse tree
+	 */
+	void enterComandoComposto(@NotNull miniPascalLangParser.ComandoCompostoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#comandoComposto}.
+	 * @param ctx the parse tree
+	 */
+	void exitComandoComposto(@NotNull miniPascalLangParser.ComandoCompostoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#partDecSubRot}.
+	 * @param ctx the parse tree
+	 */
+	void enterPartDecSubRot(@NotNull miniPascalLangParser.PartDecSubRotContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#partDecSubRot}.
+	 * @param ctx the parse tree
+	 */
+	void exitPartDecSubRot(@NotNull miniPascalLangParser.PartDecSubRotContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#secParamFormais}.
+	 * @param ctx the parse tree
+	 */
+	void enterSecParamFormais(@NotNull miniPascalLangParser.SecParamFormaisContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#secParamFormais}.
+	 * @param ctx the parse tree
+	 */
+	void exitSecParamFormais(@NotNull miniPascalLangParser.SecParamFormaisContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#comandoRepetitivo}.
+	 * @param ctx the parse tree
+	 */
+	void enterComandoRepetitivo(@NotNull miniPascalLangParser.ComandoRepetitivoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#comandoRepetitivo}.
+	 * @param ctx the parse tree
+	 */
+	void exitComandoRepetitivo(@NotNull miniPascalLangParser.ComandoRepetitivoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#expressaoSimples}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpressaoSimples(@NotNull miniPascalLangParser.ExpressaoSimplesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#expressaoSimples}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpressaoSimples(@NotNull miniPascalLangParser.ExpressaoSimplesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#declVar}.
+	 * @param ctx the parse tree
+	 */
+	void enterDeclVar(@NotNull miniPascalLangParser.DeclVarContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#declVar}.
+	 * @param ctx the parse tree
+	 */
+	void exitDeclVar(@NotNull miniPascalLangParser.DeclVarContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link miniPascalLangParser#fator}.
+	 * @param ctx the parse tree
+	 */
+	void enterFator(@NotNull miniPascalLangParser.FatorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link miniPascalLangParser#fator}.
+	 * @param ctx the parse tree
+	 */
+	void exitFator(@NotNull miniPascalLangParser.FatorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link miniPascalLangParser#variavel}.
 	 * @param ctx the parse tree
@@ -206,53 +248,13 @@ public interface miniPascalLangListener extends ParseTreeListener {
 	 */
 	void exitVariavel(@NotNull miniPascalLangParser.VariavelContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#comando_repetitivo}.
+	 * Enter a parse tree produced by {@link miniPascalLangParser#listIdent}.
 	 * @param ctx the parse tree
 	 */
-	void enterComando_repetitivo(@NotNull miniPascalLangParser.Comando_repetitivoContext ctx);
+	void enterListIdent(@NotNull miniPascalLangParser.ListIdentContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#comando_repetitivo}.
+	 * Exit a parse tree produced by {@link miniPascalLangParser#listIdent}.
 	 * @param ctx the parse tree
 	 */
-	void exitComando_repetitivo(@NotNull miniPascalLangParser.Comando_repetitivoContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#part_decl_var}.
-	 * @param ctx the parse tree
-	 */
-	void enterPart_decl_var(@NotNull miniPascalLangParser.Part_decl_varContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#part_decl_var}.
-	 * @param ctx the parse tree
-	 */
-	void exitPart_decl_var(@NotNull miniPascalLangParser.Part_decl_varContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#part_decl_sub_rotinas}.
-	 * @param ctx the parse tree
-	 */
-	void enterPart_decl_sub_rotinas(@NotNull miniPascalLangParser.Part_decl_sub_rotinasContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#part_decl_sub_rotinas}.
-	 * @param ctx the parse tree
-	 */
-	void exitPart_decl_sub_rotinas(@NotNull miniPascalLangParser.Part_decl_sub_rotinasContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#expressao_simples}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpressao_simples(@NotNull miniPascalLangParser.Expressao_simplesContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#expressao_simples}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpressao_simples(@NotNull miniPascalLangParser.Expressao_simplesContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link miniPascalLangParser#identificador}.
-	 * @param ctx the parse tree
-	 */
-	void enterIdentificador(@NotNull miniPascalLangParser.IdentificadorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link miniPascalLangParser#identificador}.
-	 * @param ctx the parse tree
-	 */
-	void exitIdentificador(@NotNull miniPascalLangParser.IdentificadorContext ctx);
+	void exitListIdent(@NotNull miniPascalLangParser.ListIdentContext ctx);
 }

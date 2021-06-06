@@ -1,0 +1,329 @@
+2021-06-04 22:32:02:573 grammar LogManager.java:25 before: (COMBINED_GRAMMAR miniPascalLang (@ header {
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+}) (@ members {
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+}) (RULES (RULE programa (BLOCK (ALT PROGRAM ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) (? (BLOCK (ALT partDecSubRot))) comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent))) (RULE listIdent (BLOCK (ALT ident {
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+										} (* (BLOCK (ALT V ident { 
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+								})))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT PROCEDURE ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT VAR))) listIdent TD ident))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE comandoComposto (BLOCK (ALT BEGIN comando (* (BLOCK (ALT SC comando))) END {System.out.println("Comando composto reconhecido!");}))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");}))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP))) {System.out.println("Comando chamada de procedimento reconhecido!");}))) (RULE comandoCondicional (BLOCK (ALT IF expressao THEN comando (? (BLOCK (ALT ELSE comando))) {System.out.println("Comando condicional reconhecido!");}))) (RULE comandoRepetitivo (BLOCK (ALT WHILE expressao DO comando {System.out.println("Comando repetitivo reconhecido!");}))) (RULE expressao (BLOCK (ALT expressaoSimples (? (BLOCK (ALT relacao expressaoSimples)))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT MAIS) (ALT MENOS))) termo (* (BLOCK (ALT (BLOCK (ALT MAIS) (ALT MENOS) (ALT OR)) termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (BLOCK (ALT VEZES) (ALT DIV) (ALT AND)) fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT Letras) (ALT Digitos)))))) (RULE tipo (BLOCK (ALT INTEGER {_tipo = PascalVariable.INTEGER;}) (ALT REAL {_tipo = PascalVariable.REAL;}) (ALT BOOLEAN {_tipo = PascalVariable.BOOLEAN;}) (ALT STRING {_tipo = PascalVariable.STRING;}))) (RULE PROGRAM (BLOCK (ALT 'program'))) (RULE INTEGER (BLOCK (ALT 'integer'))) (RULE REAL (BLOCK (ALT 'real'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE CHAR (BLOCK (ALT 'char'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE MAIS (BLOCK (ALT '+'))) (RULE MENOS (BLOCK (ALT '-'))) (RULE OR (BLOCK (ALT 'or'))) (RULE VEZES (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT 'div'))) (RULE AND (BLOCK (ALT 'and'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE VAR (BLOCK (ALT 'var'))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (BLOCK (ALT ' ') (ALT '\n') (ALT '\t') (ALT '\r') (ALT '//') (ALT '{ }'))) skip))) (RULE BEGIN (BLOCK (ALT 'begin'))) (RULE END (BLOCK (ALT 'end'))) (RULE IF (BLOCK (ALT 'if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE PROCEDURE (BLOCK (ALT 'procedure')))))
+2021-06-04 22:32:02:602 grammar LogManager.java:25 after: (COMBINED_GRAMMAR miniPascalLang (@ header {
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+}) (@ members {
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+}) (RULES (RULE programa (BLOCK (ALT PROGRAM ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) (? (BLOCK (ALT partDecSubRot))) comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent))) (RULE listIdent (BLOCK (ALT ident {
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+										} (* (BLOCK (ALT V ident { 
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+								})))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT PROCEDURE ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT VAR))) listIdent TD ident))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE comandoComposto (BLOCK (ALT BEGIN comando (* (BLOCK (ALT SC comando))) END {System.out.println("Comando composto reconhecido!");}))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");}))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP))) {System.out.println("Comando chamada de procedimento reconhecido!");}))) (RULE comandoCondicional (BLOCK (ALT IF expressao THEN comando (? (BLOCK (ALT ELSE comando))) {System.out.println("Comando condicional reconhecido!");}))) (RULE comandoRepetitivo (BLOCK (ALT WHILE expressao DO comando {System.out.println("Comando repetitivo reconhecido!");}))) (RULE expressao (BLOCK (ALT expressaoSimples (? (BLOCK (ALT relacao expressaoSimples)))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT (SET MAIS MENOS)))) termo (* (BLOCK (ALT (SET MAIS MENOS OR) termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (SET VEZES DIV AND) fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT (SET Letras Digitos))))))) (RULE tipo (BLOCK (ALT INTEGER {_tipo = PascalVariable.INTEGER;}) (ALT REAL {_tipo = PascalVariable.REAL;}) (ALT BOOLEAN {_tipo = PascalVariable.BOOLEAN;}) (ALT STRING {_tipo = PascalVariable.STRING;}))) (RULE PROGRAM (BLOCK (ALT 'program'))) (RULE INTEGER (BLOCK (ALT 'integer'))) (RULE REAL (BLOCK (ALT 'real'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE CHAR (BLOCK (ALT 'char'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE MAIS (BLOCK (ALT '+'))) (RULE MENOS (BLOCK (ALT '-'))) (RULE OR (BLOCK (ALT 'or'))) (RULE VEZES (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT 'div'))) (RULE AND (BLOCK (ALT 'and'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE VAR (BLOCK (ALT 'var'))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (BLOCK (ALT ' ') (ALT '\n') (ALT '\t') (ALT '\r') (ALT '//') (ALT '{ }'))) skip))) (RULE BEGIN (BLOCK (ALT 'begin'))) (RULE END (BLOCK (ALT 'end'))) (RULE IF (BLOCK (ALT 'if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE PROCEDURE (BLOCK (ALT 'procedure')))))
+2021-06-04 22:32:02:633 grammar LogManager.java:25 after extract implicit lexer =(COMBINED_GRAMMAR miniPascalLang (@ header {
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+}) (@ members {
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+}) (RULES (RULE programa (BLOCK (ALT PROGRAM ident SC bloco))) (RULE bloco (BLOCK (ALT (? (BLOCK (ALT partDeclVar))) (? (BLOCK (ALT partDecSubRot))) comandoComposto))) (RULE partDeclVar (BLOCK (ALT declVar (* (BLOCK (ALT SC declVar))) SC))) (RULE declVar (BLOCK (ALT tipo listIdent))) (RULE listIdent (BLOCK (ALT ident {
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+										} (* (BLOCK (ALT V ident { 
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+								})))))) (RULE partDecSubRot (BLOCK (ALT (* (BLOCK (ALT declProced SC)))))) (RULE declProced (BLOCK (ALT PROCEDURE ident (? (BLOCK (ALT paramFormais))) SC bloco))) (RULE paramFormais (BLOCK (ALT OP secParamFormais (* (BLOCK (ALT SC secParamFormais))) CP))) (RULE secParamFormais (BLOCK (ALT (? (BLOCK (ALT VAR))) listIdent TD ident))) (RULE comando (BLOCK (ALT atribuicao) (ALT chamadaProcedimento) (ALT comandoComposto) (ALT comandoCondicional) (ALT comandoRepetitivo))) (RULE comandoComposto (BLOCK (ALT BEGIN comando (* (BLOCK (ALT SC comando))) END {System.out.println("Comando composto reconhecido!");}))) (RULE atribuicao (BLOCK (ALT variavel TDE expressao {System.out.println("Comando atribuição reconhecido!");}))) (RULE chamadaProcedimento (BLOCK (ALT ident (? (BLOCK (ALT OP listExpressoes CP))) {System.out.println("Comando chamada de procedimento reconhecido!");}))) (RULE comandoCondicional (BLOCK (ALT IF expressao THEN comando (? (BLOCK (ALT ELSE comando))) {System.out.println("Comando condicional reconhecido!");}))) (RULE comandoRepetitivo (BLOCK (ALT WHILE expressao DO comando {System.out.println("Comando repetitivo reconhecido!");}))) (RULE expressao (BLOCK (ALT expressaoSimples (? (BLOCK (ALT relacao expressaoSimples)))))) (RULE relacao (BLOCK (ALT Operacao))) (RULE expressaoSimples (BLOCK (ALT (? (BLOCK (ALT (SET MAIS MENOS)))) termo (* (BLOCK (ALT (SET MAIS MENOS OR) termo)))))) (RULE termo (BLOCK (ALT fator (* (BLOCK (ALT (SET VEZES DIV AND) fator)))))) (RULE fator (BLOCK (ALT variavel) (ALT numero) (ALT OP expressao CP) (ALT NOT fator))) (RULE variavel (BLOCK (ALT ident) (ALT ident))) (RULE listExpressoes (BLOCK (ALT expressao (* (BLOCK (ALT V expressao)))))) (RULE numero (BLOCK (ALT Digitos (* (BLOCK (ALT Digitos)))))) (RULE ident (BLOCK (ALT Letras (* (BLOCK (ALT (SET Letras Digitos))))))) (RULE tipo (BLOCK (ALT INTEGER {_tipo = PascalVariable.INTEGER;}) (ALT REAL {_tipo = PascalVariable.REAL;}) (ALT BOOLEAN {_tipo = PascalVariable.BOOLEAN;}) (ALT STRING {_tipo = PascalVariable.STRING;})))))
+2021-06-04 22:32:02:633 grammar LogManager.java:25 lexer =(LEXER_GRAMMAR miniPascalLangLexer (@ header {
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+}) (@ members {
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+}) (RULES (RULE PROGRAM (BLOCK (ALT 'program'))) (RULE INTEGER (BLOCK (ALT 'integer'))) (RULE REAL (BLOCK (ALT 'real'))) (RULE BOOLEAN (BLOCK (ALT 'boolean'))) (RULE CHAR (BLOCK (ALT 'char'))) (RULE STRING (BLOCK (ALT 'string'))) (RULE Operacao (BLOCK (ALT '=') (ALT '<>') (ALT '<') (ALT '<=') (ALT '>=') (ALT '>'))) (RULE MAIS (BLOCK (ALT '+'))) (RULE MENOS (BLOCK (ALT '-'))) (RULE OR (BLOCK (ALT 'or'))) (RULE VEZES (BLOCK (ALT '*'))) (RULE DIV (BLOCK (ALT 'div'))) (RULE AND (BLOCK (ALT 'and'))) (RULE Digitos (BLOCK (ALT (+ (BLOCK (ALT [0-9]))) (? (BLOCK (ALT '.' (+ (BLOCK (ALT [0-9]))))))))) (RULE Letras (BLOCK (ALT [a-z]) (ALT [A-Z] (* (BLOCK (ALT [a-z]) (ALT [A-Z]) (ALT [0-9])))))) (RULE TRUE (BLOCK (ALT 'true'))) (RULE FALSE (BLOCK (ALT 'false'))) (RULE SC (BLOCK (ALT ';'))) (RULE V (BLOCK (ALT ','))) (RULE VAR (BLOCK (ALT 'var'))) (RULE OP (BLOCK (ALT '('))) (RULE CP (BLOCK (ALT ')'))) (RULE TD (BLOCK (ALT ':'))) (RULE TDE (BLOCK (ALT ':='))) (RULE NOT (BLOCK (ALT 'not'))) (RULE WS (BLOCK (LEXER_ALT_ACTION (ALT (BLOCK (ALT ' ') (ALT '\n') (ALT '\t') (ALT '\r') (ALT '//') (ALT '{ }'))) skip))) (RULE BEGIN (BLOCK (ALT 'begin'))) (RULE END (BLOCK (ALT 'end'))) (RULE IF (BLOCK (ALT 'if'))) (RULE THEN (BLOCK (ALT 'then'))) (RULE ELSE (BLOCK (ALT 'else'))) (RULE WHILE (BLOCK (ALT 'while'))) (RULE DO (BLOCK (ALT 'do'))) (RULE PROCEDURE (BLOCK (ALT 'procedure')))))
+2021-06-04 22:32:02:860 action-translator LogManager.java:25 translate 
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+
+2021-06-04 22:32:02:860 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+
+2021-06-04 22:32:02:923 semantics LogManager.java:25 tokens={EOF=-1, PROGRAM=1, INTEGER=2, REAL=3, BOOLEAN=4, CHAR=5, STRING=6, Operacao=7, MAIS=8, MENOS=9, OR=10, VEZES=11, DIV=12, AND=13, Digitos=14, Letras=15, TRUE=16, FALSE=17, SC=18, V=19, VAR=20, OP=21, CP=22, TD=23, TDE=24, NOT=25, WS=26, BEGIN=27, END=28, IF=29, THEN=30, ELSE=31, WHILE=32, DO=33, PROCEDURE=34}
+2021-06-04 22:32:02:923 semantics LogManager.java:25 strings={'program'=1, 'integer'=2, 'real'=3, 'boolean'=4, 'char'=5, 'string'=6, '+'=8, '-'=9, 'or'=10, '*'=11, 'div'=12, 'and'=13, 'true'=16, 'false'=17, ';'=18, ','=19, 'var'=20, '('=21, ')'=22, ':'=23, ':='=24, 'not'=25, 'begin'=27, 'end'=28, 'if'=29, 'then'=30, 'else'=31, 'while'=32, 'do'=33, 'procedure'=34}
+2021-06-04 22:32:02:934 LL1 LogManager.java:25 
+DECISION 0 in rule bloco
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[{2..4, 6}, {27, 34}]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 1 in rule bloco
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[{27, 34}, 27]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? false
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 2 in rule partDeclVar
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[18, 18]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? false
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 3 in rule listIdent
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[19, {18, 23}]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 4 in rule partDecSubRot
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[34, 27]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 5 in rule declProced
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 look=[21, 18]
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:935 LL1 LogManager.java:25 
+DECISION 6 in rule paramFormais
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[18, 22]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 7 in rule secParamFormais
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[20, 15]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 8 in rule comando
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[15, 15, 27, 29, 32]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? false
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 9 in rule comandoComposto
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[18, 28]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 10 in rule chamadaProcedimento
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[21, {18, 28, 31}]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 11 in rule comandoCondicional
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 look=[31, {18, 28, 31}]
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 LL(1)? false
+2021-06-04 22:32:02:936 LL1 LogManager.java:25 
+DECISION 12 in rule expressao
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 look=[7, {18..19, 22, 28, 30..31, 33}]
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 
+DECISION 13 in rule expressaoSimples
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 look=[{8..9}, {14..15, 21, 25}]
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 
+DECISION 14 in rule expressaoSimples
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 look=[{8..10}, {7, 18..19, 22, 28, 30..31, 33}]
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:937 LL1 LogManager.java:25 
+DECISION 15 in rule termo
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 look=[{11..13}, {7..10, 18..19, 22, 28, 30..31, 33}]
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 
+DECISION 16 in rule fator
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 look=[15, 14, 21, 25]
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 
+DECISION 17 in rule variavel
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 look=[15, 15]
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 LL(1)? false
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 
+DECISION 18 in rule listExpressoes
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 look=[19, 22]
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:938 LL1 LogManager.java:25 
+DECISION 19 in rule numero
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 look=[14, {7..13, 18..19, 22, 28, 30..31, 33}]
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 
+DECISION 20 in rule ident
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 look=[{14..15}, {7..13, 18..19, 21..24, 28, 30..31, 33}]
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 
+DECISION 21 in rule tipo
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 look=[2, 3, 4, 6]
+2021-06-04 22:32:02:939 LL1 LogManager.java:25 LL(1)? true
+2021-06-04 22:32:02:940 action-translator LogManager.java:25 translate 
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+
+2021-06-04 22:32:02:940 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+
+2021-06-04 22:32:02:959 action-translator LogManager.java:25 translate 
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+										
+2021-06-04 22:32:02:959 action-translator LogManager.java:25 translate  
+										_varName = _input.LT(-1).getText();
+										_varValue = null;
+										symbol = new PascalVariable(_varName,_tipo, _varValue);
+										if(!symbolTable.exists(_varName)){
+											symbolTable.add(symbol);
+										}else {
+											throw new PascalSemanticException("Symbol "+ _varName+" already declared");
+										}
+								
+2021-06-04 22:32:02:965 action-translator LogManager.java:25 translate System.out.println("Comando composto reconhecido!");
+2021-06-04 22:32:02:965 action-translator LogManager.java:25 translate System.out.println("Comando atribuição reconhecido!");
+2021-06-04 22:32:02:966 action-translator LogManager.java:25 translate System.out.println("Comando chamada de procedimento reconhecido!");
+2021-06-04 22:32:02:966 action-translator LogManager.java:25 translate System.out.println("Comando condicional reconhecido!");
+2021-06-04 22:32:02:968 action-translator LogManager.java:25 translate System.out.println("Comando repetitivo reconhecido!");
+2021-06-04 22:32:02:977 action-translator LogManager.java:25 translate _tipo = PascalVariable.INTEGER;
+2021-06-04 22:32:02:977 action-translator LogManager.java:25 translate _tipo = PascalVariable.REAL;
+2021-06-04 22:32:02:977 action-translator LogManager.java:25 translate _tipo = PascalVariable.BOOLEAN;
+2021-06-04 22:32:02:977 action-translator LogManager.java:25 translate _tipo = PascalVariable.STRING;
+2021-06-04 22:32:03:042 action-translator LogManager.java:25 translate 
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+
+2021-06-04 22:32:03:043 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+
+2021-06-04 22:32:03:044 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+
+2021-06-04 22:32:03:050 action-translator LogManager.java:25 translate 
+	private int _tipo;
+	private String _varName;
+	private String _varValue;
+	private PascalSymbolTable symbolTable = new PascalSymbolTable();
+	private PascalSymbol symbol;
+	
+	
+	
+
+2021-06-04 22:32:03:051 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+
+2021-06-04 22:32:03:051 action-translator LogManager.java:25 translate 
+	import data_structure.PascalSymbol;
+	import data_structure.PascalVariable;
+	import data_structure.PascalSymbolTable;
+	import exceptions.PascalSemanticException;
+	import java.util.ArrayList;
+
+

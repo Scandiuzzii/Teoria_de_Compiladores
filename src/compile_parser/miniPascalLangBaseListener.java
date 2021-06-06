@@ -1,6 +1,7 @@
 // Generated from miniPascalLang.g4 by ANTLR 4.7.2
 package compile_parser;
 
+<<<<<<< HEAD
 	import data_structure.PascalSymbol;
 	import data_structure.PascalVariable;
 	import data_structure.PascalSymbolTable;
@@ -8,7 +9,12 @@ package compile_parser;
 	import java.util.ArrayList;
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 08655c7... Em andamento
+=======
+>>>>>>> parent of 943c220... Em andamento v4
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -132,13 +138,21 @@ public class miniPascalLangBaseListener implements miniPascalLangListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+<<<<<<< HEAD
 	@Override public void enterComando_composto(miniPascalLangParser.Comando_compostoContext ctx) { }
+=======
+	@Override public void enterComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx) { }
+>>>>>>> e2a8b9574887e7cd733a0415d105ff7bedb98c8e
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+<<<<<<< HEAD
 	@Override public void exitComando_composto(miniPascalLangParser.Comando_compostoContext ctx) { }
+=======
+	@Override public void exitComandoComposto(miniPascalLangParser.ComandoCompostoContext ctx) { }
+>>>>>>> e2a8b9574887e7cd733a0415d105ff7bedb98c8e
 	/**
 	 * {@inheritDoc}
 	 *
